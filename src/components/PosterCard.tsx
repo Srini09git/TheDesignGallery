@@ -23,7 +23,7 @@ const PosterCard = ({ poster, onClick, index, isCompleted = false }: PosterCardP
       <div className="relative overflow-hidden rounded-2xl bg-muted shadow-card hover:shadow-hover transition-all duration-300 transform group-hover:scale-[1.02]">
         {/* Completed Badge */}
         {isCompleted && (
-          <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 bg-accent text-accent-foreground rounded-full text-xs font-medium shadow-soft">
+          <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 bg-accent text-black rounded-full text-xs font-medium shadow-soft">
             <CheckCircle2 className="w-3.5 h-3.5" />
             Completed
           </div>

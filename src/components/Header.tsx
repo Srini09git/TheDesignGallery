@@ -16,7 +16,7 @@ const Header = ({ username, onLogout }: HeaderProps) => {
               <Sparkles className="w-5 h-5 text-primary-foreground" />
             </div>
             <h1 className="text-2xl font-display font-bold text-foreground">
-              Poster
+              The Design Gallery
             </h1>
           </div>
 
