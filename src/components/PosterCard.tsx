@@ -60,7 +60,7 @@ const PosterCard = ({ poster, onClick, index, isCompleted = false }: PosterCardP
               {poster.title}
             </h3>
             <p className="text-primary-foreground/70 text-xs">
-              by {poster.author}
+              Level: {poster.author}
             </p>
           </div>
         </div>
