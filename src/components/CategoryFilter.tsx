@@ -11,8 +11,9 @@ interface CategoryFilterProps {
 
 const categoryLabels: Record<Category, string> = {
   all: 'All Designs',
-  logo: 'Logos',
   poster: 'Posters',
+  logo: 'Logos',
+  BrandLogo: 'BrandLogo',
   flyer: 'Flyers',
   banner: 'Banners',
   completed: 'Completed',

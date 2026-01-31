@@ -531,6 +531,67 @@
       "category": "poster",
       "image": "/Images/Posters/poster (75).jpg",
       "author": "Easy"
-    }
+    },
+
+    
+  { "id": 200, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (1).jpg", "author": "Easy" },
+  { "id": 201, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (2).jpg", "author": "Easy" },
+  { "id": 202, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (3).jpg", "author": "Easy" },
+  { "id": 203, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (4).jpg", "author": "Easy" },
+  { "id": 204, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (5).jpg", "author": "Easy" },
+  { "id": 205, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (6).jpg", "author": "Easy" },
+  { "id": 206, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (7).jpg", "author": "Easy" },
+  { "id": 207, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (8).jpg", "author": "Easy" },
+  { "id": 208, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (9).jpg", "author": "Easy" },
+  { "id": 209, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (10).jpg", "author": "Easy" },
+
+  { "id": 210, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (11).jpg", "author": "Easy" },
+  { "id": 211, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (12).jpg", "author": "Easy" },
+  { "id": 212, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (13).jpg", "author": "Easy" },
+  { "id": 213, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (14).jpg", "author": "Easy" },
+  { "id": 214, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (15).jpg", "author": "Easy" },
+  { "id": 215, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (16).jpg", "author": "Easy" },
+  { "id": 216, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (17).jpg", "author": "Easy" },
+  { "id": 217, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (18).jpg", "author": "Easy" },
+  { "id": 218, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (19).jpg", "author": "Easy" },
+  { "id": 219, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (20).jpg", "author": "Easy" },
+
+  { "id": 220, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (21).jpg", "author": "Easy" },
+  { "id": 221, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (22).jpg", "author": "Easy" },
+  { "id": 222, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (23).jpg", "author": "Easy" },
+  { "id": 223, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (24).jpg", "author": "Easy" },
+  { "id": 224, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (25).jpg", "author": "Easy" },
+  { "id": 225, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (26).jpg", "author": "Easy" },
+  { "id": 226, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (27).jpg", "author": "Easy" },
+  { "id": 227, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (28).jpg", "author": "Easy" },
+  { "id": 228, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (29).jpg", "author": "Easy" },
+  { "id": 229, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (30).jpg", "author": "Easy" },
+
+  { "id": 230, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (31).jpg", "author": "Easy" },
+  { "id": 231, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (32).jpg", "author": "Easy" },
+  { "id": 232, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (33).jpg", "author": "Easy" },
+  { "id": 233, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (34).jpg", "author": "Easy" },
+  { "id": 234, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (35).jpg", "author": "Easy" },
+  { "id": 235, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (36).jpg", "author": "Easy" },
+  { "id": 236, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (37).jpg", "author": "Easy" },
+  { "id": 237, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (38).jpg", "author": "Easy" },
+  { "id": 238, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (39).jpg", "author": "Easy" },
+  { "id": 239, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (40).jpg", "author": "Easy" },
+
+  { "id": 240, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (41).jpg", "author": "Easy" },
+  { "id": 241, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (42).jpg", "author": "Easy" },
+  { "id": 242, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (43).jpg", "author": "Easy" },
+  { "id": 243, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (44).jpg", "author": "Easy" },
+  { "id": 244, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (45).jpg", "author": "Easy" },
+  { "id": 245, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (46).jpg", "author": "Easy" },
+  { "id": 246, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (47).jpg", "author": "Easy" },
+  { "id": 247, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (48).jpg", "author": "Easy" },
+  { "id": 248, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (49).jpg", "author": "Easy" },
+  { "id": 249, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (50).jpg", "author": "Easy" },
+  { "id": 250, "title": "BrandLogo", "category": "BrandLogo", "image": "/Images/Brandlogo/BrandLogo (51).jpg", "author": "Easy" }
+
+    
+    
   ]
+  
 }

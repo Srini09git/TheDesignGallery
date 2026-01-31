@@ -32,7 +32,7 @@ export const usePosters = (completedIds: number[] = []) => {
     return posters.filter(poster => poster.category === selectedCategory);
   })();
 
-  const categories: Category[] = ['all', 'logo', 'poster', 'flyer', 'banner', 'completed'];
+  const categories: Category[] = ['all', 'poster','BrandLogo', 'logo', 'flyer', 'banner', 'completed'];
 
   return {
     posters: filteredPosters,
