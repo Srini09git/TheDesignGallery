@@ -35,6 +35,10 @@ export const usePosters = (completedIds: number[] = [], track: Track = 'graphic-
           const res = await fetch('/data/challenges.json');
           const data = await res.json();
           setPosters(data.posters || []);
+        } else if (track === 'interview') {
+          const res = await fetch('/data/preparation.json');
+          const data = await res.json();
+          setPosters(data.posters || []);
         } else {
           const [postersRes, logosRes] = await Promise.all([
             fetch('/data/posters.json'),
@@ -59,6 +63,7 @@ export const usePosters = (completedIds: number[] = [], track: Track = 'graphic-
 
   const graphicCategories: Category[] = ['poster', 'BrandLogo', 'logo', 'flyer', 'banner'];
   const uiuxCategories: Category[] = ['mobile-screen', 'desktop-ui', 'ux'];
+  const interviewCategories: Category[] = ['Frontend', 'Backend', 'UiUx', 'Graphic design'];
 
   const categories = (() => {
     if (track === 'ui-ux') {
@@ -66,6 +71,9 @@ export const usePosters = (completedIds: number[] = [], track: Track = 'graphic-
     }
     if (track === 'challenges') {
       return ['all', 'completed'] as Category[];
+    }
+    if (track === 'interview') {
+      return ['all', ...interviewCategories] as Category[];
     }
     return ['all', ...graphicCategories, 'completed'] as Category[];
   })();
@@ -77,6 +85,9 @@ export const usePosters = (completedIds: number[] = [], track: Track = 'graphic-
       }
       if (track === 'challenges') {
         return posters.filter(poster => poster.category === 'challenge');
+      }
+      if (track === 'interview') {
+        return posters.filter(poster => interviewCategories.includes(poster.category as Category));
       }
       return posters.filter(poster => graphicCategories.includes(poster.category as Category));
     })();

@@ -2,19 +2,23 @@
 
 import { useState } from 'react';
 import { Poster } from '@/types/poster';
-import { cn } from '@/lib/utils';
-import { CheckCircle2 } from 'lucide-react';
+import { cn, calculateDuration } from '@/lib/utils';
+import { CheckCircle2, Clock } from 'lucide-react';
 
 interface PosterCardProps {
   poster: Poster;
   onClick: (poster: Poster) => void;
   index: number;
   isCompleted?: boolean;
+  completedAt?: string | null;
+  downloadedAt?: string | null;
 }
 
-const PosterCard = ({ poster, onClick, index, isCompleted = false }: PosterCardProps) => {
+const PosterCard = ({ poster, onClick, index, isCompleted = false, completedAt, downloadedAt }: PosterCardProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  
+  const duration = completedAt && downloadedAt ? calculateDuration(downloadedAt, completedAt) : null;
 
   return (
     <div
@@ -23,11 +27,34 @@ const PosterCard = ({ poster, onClick, index, isCompleted = false }: PosterCardP
       onClick={() => onClick(poster)}
     >
       <div className="relative overflow-hidden rounded-2xl bg-muted shadow-card hover:shadow-hover transition-all duration-300 transform group-hover:scale-[1.02]">
-        {/* Completed Badge */}
-        {isCompleted && (
-          <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 bg-accent text-black rounded-full text-xs font-medium shadow-soft">
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            Completed
+        {/* Badges */}
+        {(isCompleted || downloadedAt) && (
+          <div className="absolute top-3 right-3 z-10 flex flex-col items-end gap-1">
+            {isCompleted && (
+              <>
+                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-accent text-black rounded-full text-xs font-medium shadow-soft">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  Completed
+                </div>
+                {completedAt && (
+                  <div className="px-2.5 py-1 bg-black/60 backdrop-blur-md text-white/90 rounded-full text-[10px] font-semibold tracking-wider shadow-soft">
+                    {completedAt}
+                  </div>
+                )}
+              </>
+            )}
+            
+            {downloadedAt && (
+              <div className="px-2.5 py-1 bg-blue-500/20 backdrop-blur-md text-blue-100 rounded-full text-[10px] font-semibold tracking-wider shadow-soft border border-blue-500/30 flex items-center gap-1 mt-0.5">
+                <span className="font-bold">↓</span> {downloadedAt}
+              </div>
+            )}
+
+            {duration && (
+              <div className="px-2.5 py-1 bg-purple-500/20 backdrop-blur-md text-purple-100 rounded-full text-[10px] font-semibold tracking-wider shadow-soft border border-purple-500/30 flex items-center gap-1 mt-0.5">
+                <Clock className="w-2.5 h-2.5" /> {duration}
+              </div>
+            )}
           </div>
         )}
 

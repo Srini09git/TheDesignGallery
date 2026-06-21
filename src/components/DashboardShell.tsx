@@ -12,7 +12,8 @@ export default function DashboardShell() {
 
   return (
     <Dashboard
-      username={user}
+      username={user.username}
+      roles={user.roles}
       completedIds={completedIds}
     />
   );

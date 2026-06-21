@@ -9,9 +9,11 @@ interface PosterGridProps {
   isLoading: boolean;
   onPosterClick: (poster: Poster) => void;
   completedIds?: number[];
+  getCompletionDate?: (id: number) => string | null;
+  getDownloadDate?: (id: number) => string | null;
 }
 
-const PosterGrid = ({ posters, isLoading, onPosterClick, completedIds = [] }: PosterGridProps) => {
+const PosterGrid = ({ posters, isLoading, onPosterClick, completedIds = [], getCompletionDate, getDownloadDate }: PosterGridProps) => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-20">
@@ -37,6 +39,8 @@ const PosterGrid = ({ posters, isLoading, onPosterClick, completedIds = [] }: Po
           onClick={onPosterClick}
           index={index}
           isCompleted={completedIds.includes(poster.id)}
+          completedAt={getCompletionDate?.(poster.id)}
+          downloadedAt={getDownloadDate?.(poster.id)}
         />
       ))}
     </div>

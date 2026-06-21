@@ -9,6 +9,7 @@ interface CategoryFilterProps {
   selected: Category;
   onSelect: (category: Category) => void;
   completedCount?: number;
+  allLabel?: string;
 }
 
 const categoryLabels: Record<Category, string> = {
@@ -24,9 +25,13 @@ const categoryLabels: Record<Category, string> = {
   ux: 'UX',
   challenge: 'Challenges',
   preparation: 'Interview Prep',
+  Frontend: 'Frontend',
+  Backend: 'Backend',
+  UiUx: 'UI/UX',
+  'Graphic design': 'Graphic Design',
 };
 
-const CategoryFilter = ({ categories, selected, onSelect, completedCount = 0 }: CategoryFilterProps) => {
+const CategoryFilter = ({ categories, selected, onSelect, completedCount = 0, allLabel }: CategoryFilterProps) => {
   return (
     <div className="flex flex-wrap gap-1.5 sm:gap-2">
       {categories.map((category) => (
@@ -43,7 +48,7 @@ const CategoryFilter = ({ categories, selected, onSelect, completedCount = 0 }: 
           {category === 'completed' && (
             <CheckCircle2 className="w-3 h-3" />
           )}
-          {categoryLabels[category]}
+          {category === 'all' && allLabel ? allLabel : categoryLabels[category]}
           {category === 'completed' && completedCount > 0 && (
             <span className={cn(
               "px-1.5 py-0.5 text-[10px] rounded-full font-bold",

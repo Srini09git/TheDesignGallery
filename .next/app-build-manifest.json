@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/page": [
+    "/graphic-design/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/graphic-design/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -16,25 +16,35 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
+    ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/_not-found/page.js"
+    ],
+    "/challenges/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/challenges/page.js"
+    ],
+    "/interview/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/interview/page.js"
     ],
     "/ui-ux/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/ui-ux/page.js"
     ],
-    "/graphic-design/page": [
+    "/placement/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/graphic-design/page.js"
-    ],
-    "/challenges/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/challenges/page.js"
+      "static/chunks/app/placement/page.js"
     ]
   }
 }

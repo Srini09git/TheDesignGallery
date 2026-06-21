@@ -2,48 +2,35 @@
   "posters": [
     {
       "id": 501,
-      "title": "Explain UX vs UI Design",
-      "category": "preparation",
-      "image": "/Images/UiUx/ux.png",
-      "images": ["/Images/UiUx/ux.png"],
-      "description": "Prepare a comprehensive answer detailing the difference between User Experience (UX) and User Interface (UI) design, how they collaborate, and who handles research vs aesthetics.",
-      "author": "Easy"
+      "title": "React Performance Optimization",
+      "category": "Frontend",
+      "pdfUrl": "/pdfs/react_optimization.pdf",
+      "description": "Interview questions related to React rendering, memoization, and performance.",
+      "author": "Advanced"
     },
     {
       "id": 502,
-      "title": "Nielsen's Heuristic Evaluations",
-      "category": "preparation",
-      "image": "/Images/UiUx/ux.png",
-      "images": ["/Images/UiUx/ux.png"],
-      "description": "Understand and list Jacob Nielsen's 10 usability heuristics for user interface design. Be prepared to provide real-world website examples for at least 3 heuristics.",
+      "title": "Node.js Architecture",
+      "category": "Backend",
+      "pdfUrl": "/pdfs/node_architecture.pdf",
+      "description": "Event loop, streams, and non-blocking I/O concepts.",
       "author": "Intermediate"
     },
     {
       "id": 503,
-      "title": "User Research Methodologies",
-      "category": "preparation",
-      "image": "/Images/UiUx/ux.png",
-      "images": ["/Images/UiUx/ux.png"],
-      "description": "Explain when to use quantitative methods (e.g. surveys, analytics) versus qualitative methods (e.g. user interviews, usability testing) in product lifecycles.",
-      "author": "Intermediate"
+      "title": "Explain UX vs UI Design",
+      "category": "UiUx",
+      "pdfUrl": "/pdfs/ux_vs_ui.pdf",
+      "description": "Difference between User Experience and User Interface design.",
+      "author": "Easy"
     },
     {
       "id": 504,
-      "title": "The Double Diamond Process",
-      "category": "preparation",
-      "image": "/Images/UiUx/ux.png",
-      "images": ["/Images/UiUx/ux.png"],
-      "description": "Walk through the four stages of the Design Council's Double Diamond model: Discover, Define, Develop, and Deliver. Clarify divergence and convergence phases.",
-      "author": "Advanced"
-    },
-    {
-      "id": 505,
-      "title": "Mobile Design Accessibility",
-      "category": "preparation",
-      "image": "/Images/UiUx/ux.png",
-      "images": ["/Images/UiUx/ux.png"],
-      "description": "Outline key considerations for mobile accessibility including WCAG color contrast thresholds, minimal interactive tap target size (e.g. 48x48dp), and screen reader support.",
-      "author": "Advanced"
+      "title": "Typography and Color Theory",
+      "category": "Graphic design",
+      "pdfUrl": "/pdfs/typography_color.pdf",
+      "description": "Fundamentals of graphic design applied to modern brand identity.",
+      "author": "Intermediate"
     }
   ]
 }

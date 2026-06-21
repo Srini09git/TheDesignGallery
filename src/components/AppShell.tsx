@@ -26,7 +26,7 @@ export default function AppShell({ children }: AppShellProps) {
 
   return (
     <div className="min-h-screen gradient-warm">
-      <Header username={user} onLogout={logout} />
+      <Header username={user.username} onLogout={logout} />
       <main className="w-full">
         {children}
       </main>

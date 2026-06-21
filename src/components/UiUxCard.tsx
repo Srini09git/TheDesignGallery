@@ -1,12 +1,15 @@
 "use client";
 
 import { Poster } from '@/types/poster';
-import { cn } from '@/lib/utils';
-import { Eye, CheckCircle2, Lock } from 'lucide-react';
+import { cn, calculateDuration } from '@/lib/utils';
+import { Eye, CheckCircle2, Lock, Clock } from 'lucide-react';
 
 interface UiUxCardProps {
   poster: Poster;
+  index: number;
   isCompleted: boolean;
+  completedAt?: string | null;
+  downloadedAt?: string | null;
   onOpen: () => void;
   onDownload: () => void;
   isDownloading?: boolean;
@@ -30,19 +33,18 @@ const categoryLabels: Record<string, string> = {
 
 export default function UiUxCard({
   poster,
+  index,
   isCompleted,
+  completedAt,
+  downloadedAt,
   onOpen,
   onDownload,
   isDownloading = false,
   isLocked = false,
   onLockedClick,
 }: UiUxCardProps) {
-  const taskNum = (() => {
-    if (poster.id >= 500) return poster.id - 500;
-    if (poster.id >= 400) return poster.id - 400;
-    if (poster.id >= 300) return poster.id - 299;
-    return poster.id;
-  })();
+  const taskNum = index + 1;
+  const duration = completedAt && downloadedAt ? calculateDuration(downloadedAt, completedAt) : null;
 
   return (
     <div
@@ -87,10 +89,21 @@ export default function UiUxCard({
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-secondary text-secondary-foreground">
                   {categoryLabels[poster.category] || poster.category}
                 </span>
+                {downloadedAt && (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 sm:hidden">
+                    ↓ {downloadedAt}
+                  </span>
+                )}
                 {isCompleted && (
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1 sm:hidden">
                     <CheckCircle2 className="w-2.5 h-2.5" />
-                    Done
+                    {completedAt ? `Done: ${completedAt}` : 'Done'}
+                  </span>
+                )}
+                {duration && (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 flex items-center gap-1 sm:hidden">
+                    <Clock className="w-2.5 h-2.5" />
+                    {duration}
                   </span>
                 )}
               </>
@@ -132,10 +145,24 @@ export default function UiUxCard({
                 <span>Open</span>
               </button>
 
+              {downloadedAt && (
+                <span className="hidden sm:flex px-3 py-1.5 rounded-xl text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 items-center gap-1.5 border border-blue-500/20">
+                  <span className="font-bold">↓</span>
+                  <span>{downloadedAt}</span>
+                </span>
+              )}
+
               {isCompleted && (
                 <span className="hidden sm:flex px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 items-center gap-1.5 border border-emerald-500/20">
                   <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Completed</span>
+                  <span>{completedAt ? `Done on ${completedAt}` : 'Completed'}</span>
+                </span>
+              )}
+
+              {duration && (
+                <span className="hidden sm:flex px-3 py-1.5 rounded-xl text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 items-center gap-1.5 border border-purple-500/20">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>Time taken: {duration}</span>
                 </span>
               )}
             </>

@@ -11,13 +11,15 @@ import {
   Sparkles,
   Plus,
   Trash2,
-  X
+  X,
+  BookOpen
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Poster } from '@/types/poster';
 
 interface DashboardProps {
   username: string;
+  roles?: string[];
   completedIds: number[];
 }
 
@@ -35,7 +37,13 @@ interface SubStats {
   percent: number;
 }
 
-export default function Dashboard({ username, completedIds }: DashboardProps) {
+interface Goal {
+  id: string;
+  text: string;
+  done: boolean;
+}
+
+export default function Dashboard({ username, roles = [], completedIds }: DashboardProps) {
   const [stats, setStats] = useState<{
     uiux: TrackStats;
     graphic: TrackStats;
@@ -64,7 +72,7 @@ export default function Dashboard({ username, completedIds }: DashboardProps) {
   const [loading, setLoading] = useState(true);
   
   // Custom Goals Checklist state (local storage)
-  const [goals, setGoals] = useState<{ id: string; text: string; done: boolean }[]>([]);
+  const [goals, setGoals] = useState<Goal[]>([]);
   const [newGoalText, setNewGoalText] = useState('');
 
   useEffect(() => {
@@ -167,7 +175,7 @@ export default function Dashboard({ username, completedIds }: DashboardProps) {
         setSubStats({
           uiux: [
             { title: 'Mobile Screen', completed: mobileCompleted, total: mobileTotal, percent: mobileTotal > 0 ? Math.round((mobileCompleted / mobileTotal) * 100) : 0 },
-            { title: 'Desktop UI', completed: pcCompleted, total: pcTotal, percent: pcTotal > 0 ? Math.round((pcCompleted / pcTotal) * 105 / 105 * 100) : 0 }, // fallback protection
+            { title: 'Desktop UI', completed: pcCompleted, total: pcTotal, percent: pcTotal > 0 ? Math.round((pcCompleted / pcTotal) * 105 / 105 * 100) : 0 },
             { title: 'UX Map', completed: uxCompleted, total: uxTotal, percent: uxTotal > 0 ? Math.round((uxCompleted / uxTotal) * 100) : 0 }
           ],
           graphic: [
@@ -221,6 +229,15 @@ export default function Dashboard({ username, completedIds }: DashboardProps) {
     localStorage.setItem('user_goals', JSON.stringify(updated));
   };
 
+  const renderProgressBar = (percent: number, colorClass: string) => (
+    <div className="w-full bg-secondary rounded-full h-2 overflow-hidden">
+      <div 
+        className={`${colorClass} h-full rounded-full transition-all duration-500`}
+        style={{ width: `${percent}%` }}
+      />
+    </div>
+  );
+
   const renderSubcategoryStats = (items: SubStats[], barColorClass: string) => {
     return (
       <div className="space-y-3.5 mt-3 pt-3 border-t border-border/40 w-full animate-slide-down" onClick={(e) => e.stopPropagation()}>
@@ -232,27 +249,37 @@ export default function Dashboard({ username, completedIds }: DashboardProps) {
                 {item.completed}/{item.total} ({item.total - item.completed} pending)
               </span>
             </div>
-            <div className="w-full bg-secondary rounded-full h-1.5 overflow-hidden">
-              <div 
-                className={`${barColorClass} h-full rounded-full transition-all duration-500`}
-                style={{ width: `${item.percent}%` }}
-              />
-            </div>
+            {renderProgressBar(item.percent, barColorClass)}
           </div>
         ))}
       </div>
     );
   };
 
-  // Calculations for overall progress
-  const totalItems = stats.uiux.total + stats.graphic.total + stats.challenges.total + stats.prep.total;
-  const totalCompleted = stats.uiux.completed + stats.graphic.completed + stats.challenges.completed + stats.prep.completed;
+  let totalItems = 0;
+  let totalCompleted = 0;
+  
+  if (roles.includes('UIUX')) {
+    totalItems += stats.uiux.total;
+    totalCompleted += stats.uiux.completed;
+  }
+  if (roles.includes('GraphicDesign')) {
+    totalItems += stats.graphic.total;
+    totalCompleted += stats.graphic.completed;
+  }
+  if (roles.includes('Challenges')) {
+    totalItems += stats.challenges.total;
+    totalCompleted += stats.challenges.completed;
+  }
+  if (roles.includes('InterviewQ&S')) {
+    totalItems += stats.prep.total;
+    totalCompleted += stats.prep.completed;
+  }
+
   const overallPercent = totalItems > 0 ? Math.round((totalCompleted / totalItems) * 100) : 0;
 
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-4 py-4 space-y-5 animate-fade-in">
-      
-      {/* Welcome Banner */}
       <div className="relative rounded-3xl overflow-hidden gradient-primary p-5 sm:p-8 text-white shadow-hover flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-xl -ml-16 -mb-16 pointer-events-none" />
@@ -270,7 +297,6 @@ export default function Dashboard({ username, completedIds }: DashboardProps) {
           </p>
         </div>
 
-        {/* Circular Progress Widget */}
         <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 flex items-center gap-4 relative z-10 border border-white/10 shrink-0">
           <div className="relative w-16 h-16 flex items-center justify-center">
             <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
@@ -300,107 +326,112 @@ export default function Dashboard({ username, completedIds }: DashboardProps) {
         </div>
       </div>
 
-      {/* Grid of Track Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         
         {/* UI/UX Card */}
-        <div 
-          onClick={() => setActiveExpanded(activeExpanded === 'ui-ux' ? null : 'ui-ux')}
-          className={`group cursor-pointer bg-card hover:bg-card/85 text-card-foreground border rounded-3xl p-6 shadow-soft hover:shadow-hover transition-all duration-300 flex flex-col justify-between space-y-4 ${
-            activeExpanded === 'ui-ux' ? 'border-indigo-500 shadow-hover ring-2 ring-indigo-500/20' : 'border-border/80 hover:border-primary/40'
-          }`}
-        >
-          <div className="flex justify-between items-start">
-            <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 dark:bg-indigo-500/5 text-indigo-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <LayoutGrid className="w-6 h-6" />
+        {roles.includes('UIUX') && (
+          <div 
+            onClick={() => setActiveExpanded(activeExpanded === 'ui-ux' ? null : 'ui-ux')}
+            className={`group cursor-pointer bg-card hover:bg-card/85 text-card-foreground border rounded-3xl p-6 shadow-soft hover:shadow-hover transition-all duration-300 flex flex-col justify-between space-y-4 ${
+              activeExpanded === 'ui-ux' ? 'border-indigo-500 shadow-hover ring-2 ring-indigo-500/20' : 'border-border/80 hover:border-primary/40'
+            }`}
+          >
+            <div className="flex justify-between items-start">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 dark:bg-indigo-500/5 text-indigo-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <LayoutGrid className="w-6 h-6" />
+              </div>
+              <span className="text-xs font-bold text-indigo-500 bg-indigo-500/10 px-2.5 py-1 rounded-full">
+                {stats.uiux.percent}% Done
+              </span>
             </div>
-            <span className="text-xs font-bold text-indigo-500 bg-indigo-500/10 px-2.5 py-1 rounded-full">
-              {stats.uiux.percent}% Done
-            </span>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold font-display group-hover:text-primary transition-colors">UI/UX Track</h3>
-            <p className="text-xs text-muted-foreground mt-1">High-fidelity wireframes & app screens</p>
-          </div>
-          <div className="space-y-2 pt-2 border-t border-border/40">
-            <div className="flex justify-between text-xs font-semibold">
-              <span className="text-emerald-500">Completed: {stats.uiux.completed}</span>
-              <span className="text-amber-500">Pending: {stats.uiux.pending}</span>
+            <div>
+              <h3 className="text-lg font-bold font-display group-hover:text-primary transition-colors">UI/UX Track</h3>
+              <p className="text-xs text-muted-foreground mt-1">High-fidelity wireframes & app screens</p>
             </div>
-            <div className="w-full bg-secondary rounded-full h-1.5 overflow-hidden">
-              <div 
-                className="bg-indigo-500 h-full rounded-full transition-all duration-500" 
-                style={{ width: `${stats.uiux.percent}%` }}
-              />
+            <div className="space-y-2 pt-2 border-t border-border/40">
+              <div className="flex justify-between text-xs font-semibold">
+                <span className="text-emerald-500">Completed: {stats.uiux.completed}</span>
+                <span className="text-amber-500">Pending: {stats.uiux.pending}</span>
+              </div>
+              <div className="w-full bg-secondary rounded-full h-1.5 overflow-hidden">
+                <div 
+                  className="bg-indigo-500 h-full rounded-full transition-all duration-500" 
+                  style={{ width: `${stats.uiux.percent}%` }}
+                />
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Graphic Design Card */}
-        <div 
-          onClick={() => setActiveExpanded(activeExpanded === 'graphic-design' ? null : 'graphic-design')}
-          className={`group cursor-pointer bg-card hover:bg-card/85 text-card-foreground border rounded-3xl p-6 shadow-soft hover:shadow-hover transition-all duration-300 flex flex-col justify-between space-y-4 ${
-            activeExpanded === 'graphic-design' ? 'border-amber-500 shadow-hover ring-2 ring-amber-500/20' : 'border-border/80 hover:border-primary/40'
-          }`}
-        >
-          <div className="flex justify-between items-start">
-            <div className="w-12 h-12 rounded-2xl bg-amber-500/10 dark:bg-amber-500/5 text-amber-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Palette className="w-6 h-6" />
+        {roles.includes('GraphicDesign') && (
+          <div 
+            onClick={() => setActiveExpanded(activeExpanded === 'graphic-design' ? null : 'graphic-design')}
+            className={`group cursor-pointer bg-card hover:bg-card/85 text-card-foreground border rounded-3xl p-6 shadow-soft hover:shadow-hover transition-all duration-300 flex flex-col justify-between space-y-4 ${
+              activeExpanded === 'graphic-design' ? 'border-amber-500 shadow-hover ring-2 ring-amber-500/20' : 'border-border/80 hover:border-primary/40'
+            }`}
+          >
+            <div className="flex justify-between items-start">
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 dark:bg-amber-500/5 text-amber-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Palette className="w-6 h-6" />
+              </div>
+              <span className="text-xs font-bold text-amber-500 bg-amber-500/10 px-2.5 py-1 rounded-full">
+                {stats.graphic.percent}% Done
+              </span>
             </div>
-            <span className="text-xs font-bold text-amber-500 bg-amber-500/10 px-2.5 py-1 rounded-full">
-              {stats.graphic.percent}% Done
-            </span>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold font-display group-hover:text-primary transition-colors">Graphic Design</h3>
-            <p className="text-xs text-muted-foreground mt-1">Creative poster & brand logo layouts</p>
-          </div>
-          <div className="space-y-2 pt-2 border-t border-border/40">
-            <div className="flex justify-between text-xs font-semibold">
-              <span className="text-emerald-500">Completed: {stats.graphic.completed}</span>
-              <span className="text-amber-500">Pending: {stats.graphic.pending}</span>
+            <div>
+              <h3 className="text-lg font-bold font-display group-hover:text-primary transition-colors">Graphic Design</h3>
+              <p className="text-xs text-muted-foreground mt-1">Creative poster & brand logo layouts</p>
             </div>
-            <div className="w-full bg-secondary rounded-full h-1.5 overflow-hidden">
-              <div 
-                className="bg-amber-500 h-full rounded-full transition-all duration-500" 
-                style={{ width: `${stats.graphic.percent}%` }}
-              />
+            <div className="space-y-2 pt-2 border-t border-border/40">
+              <div className="flex justify-between text-xs font-semibold">
+                <span className="text-emerald-500">Completed: {stats.graphic.completed}</span>
+                <span className="text-amber-500">Pending: {stats.graphic.pending}</span>
+              </div>
+              <div className="w-full bg-secondary rounded-full h-1.5 overflow-hidden">
+                <div 
+                  className="bg-amber-500 h-full rounded-full transition-all duration-500" 
+                  style={{ width: `${stats.graphic.percent}%` }}
+                />
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Design Challenges Card */}
-        <div 
-          onClick={() => setActiveExpanded(activeExpanded === 'challenges' ? null : 'challenges')}
-          className={`group cursor-pointer bg-card hover:bg-card/85 text-card-foreground border rounded-3xl p-6 shadow-soft hover:shadow-hover transition-all duration-300 flex flex-col justify-between space-y-4 ${
-            activeExpanded === 'challenges' ? 'border-emerald-500 shadow-hover ring-2 ring-emerald-500/20' : 'border-border/80 hover:border-primary/40'
-          }`}
-        >
-          <div className="flex justify-between items-start">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 dark:bg-emerald-500/5 text-emerald-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Trophy className="w-6 h-6" />
+        {roles.includes('Challenges') && (
+          <div 
+            onClick={() => setActiveExpanded(activeExpanded === 'challenges' ? null : 'challenges')}
+            className={`group cursor-pointer bg-card hover:bg-card/85 text-card-foreground border rounded-3xl p-6 shadow-soft hover:shadow-hover transition-all duration-300 flex flex-col justify-between space-y-4 ${
+              activeExpanded === 'challenges' ? 'border-emerald-500 shadow-hover ring-2 ring-emerald-500/20' : 'border-border/80 hover:border-primary/40'
+            }`}
+          >
+            <div className="flex justify-between items-start">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 dark:bg-emerald-500/5 text-emerald-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Trophy className="w-6 h-6" />
+              </div>
+              <span className="text-xs font-bold text-emerald-500 bg-emerald-500/10 px-2.5 py-1 rounded-full">
+                {stats.challenges.percent}% Done
+              </span>
             </div>
-            <span className="text-xs font-bold text-emerald-500 bg-emerald-500/10 px-2.5 py-1 rounded-full">
-              {stats.challenges.percent}% Done
-            </span>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold font-display group-hover:text-primary transition-colors">Design Challenges</h3>
-            <p className="text-xs text-muted-foreground mt-1">Real-world design sprints & tasks</p>
-          </div>
-          <div className="space-y-2 pt-2 border-t border-border/40">
-            <div className="flex justify-between text-xs font-semibold">
-              <span className="text-emerald-500">Completed: {stats.challenges.completed}</span>
-              <span className="text-amber-500">Pending: {stats.challenges.pending}</span>
+            <div>
+              <h3 className="text-lg font-bold font-display group-hover:text-primary transition-colors">Design Challenges</h3>
+              <p className="text-xs text-muted-foreground mt-1">Real-world design sprints & tasks</p>
             </div>
-            <div className="w-full bg-secondary rounded-full h-1.5 overflow-hidden">
-              <div 
-                className="bg-emerald-500 h-full rounded-full transition-all duration-500" 
-                style={{ width: `${stats.challenges.percent}%` }}
-              />
+            <div className="space-y-2 pt-2 border-t border-border/40">
+              <div className="flex justify-between text-xs font-semibold">
+                <span className="text-emerald-500">Completed: {stats.challenges.completed}</span>
+                <span className="text-amber-500">Pending: {stats.challenges.pending}</span>
+              </div>
+              <div className="w-full bg-secondary rounded-full h-1.5 overflow-hidden">
+                <div 
+                  className="bg-emerald-500 h-full rounded-full transition-all duration-500" 
+                  style={{ width: `${stats.challenges.percent}%` }}
+                />
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
       </div>
 
@@ -419,17 +450,20 @@ export default function Dashboard({ username, completedIds }: DashboardProps) {
             <div className={`w-10 h-10 rounded-2xl flex items-center justify-center ${
               activeExpanded === 'ui-ux' ? 'bg-indigo-500/10 text-indigo-500' :
               activeExpanded === 'graphic-design' ? 'bg-amber-500/10 text-amber-500' :
-              'bg-emerald-500/10 text-emerald-500'
+              activeExpanded === 'challenges' ? 'bg-emerald-500/10 text-emerald-500' :
+              'bg-pink-500/10 text-pink-500'
             }`}>
               {activeExpanded === 'ui-ux' && <LayoutGrid className="w-5 h-5" />}
               {activeExpanded === 'graphic-design' && <Palette className="w-5 h-5" />}
               {activeExpanded === 'challenges' && <Trophy className="w-5 h-5" />}
+              {activeExpanded === 'prep' && <BookOpen className="w-5 h-5" />}
             </div>
             <div>
               <h3 className="text-lg font-bold font-display">
                 {activeExpanded === 'ui-ux' && 'UI/UX Track Breakdown'}
                 {activeExpanded === 'graphic-design' && 'Graphic Design Breakdown'}
                 {activeExpanded === 'challenges' && 'Design Challenges Breakdown'}
+                {activeExpanded === 'prep' && 'Interview Q&S Breakdown'}
               </h3>
               <p className="text-xs text-muted-foreground">Sub-category breakdown</p>
             </div>
@@ -439,7 +473,8 @@ export default function Dashboard({ username, completedIds }: DashboardProps) {
           <div className="space-y-4">
             {(activeExpanded === 'ui-ux' ? subStats.uiux :
               activeExpanded === 'graphic-design' ? subStats.graphic :
-              subStats.challenges).map((item, idx) => (
+              activeExpanded === 'challenges' ? subStats.challenges :
+              subStats.prep).map((item, idx) => (
               <div key={idx} className="space-y-1.5">
                 <div className="flex justify-between text-sm font-semibold">
                   <span className="text-foreground/90">{item.title}</span>
@@ -452,7 +487,8 @@ export default function Dashboard({ username, completedIds }: DashboardProps) {
                     className={`h-full rounded-full transition-all duration-500 ${
                       activeExpanded === 'ui-ux' ? 'bg-indigo-500' :
                       activeExpanded === 'graphic-design' ? 'bg-amber-500' :
-                      'bg-emerald-500'
+                      activeExpanded === 'challenges' ? 'bg-emerald-500' :
+                      'bg-pink-500'
                     }`}
                     style={{ width: `${item.percent}%` }}
                   />

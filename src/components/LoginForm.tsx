@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import Image from 'next/image';
 
 interface LoginFormProps {
-  onLogin: (username: string) => void;
+  onLogin: (username: string, roles: string[]) => void;
 }
 
 const LoginForm = ({ onLogin }: LoginFormProps) => {
@@ -29,12 +29,12 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
         throw new Error('Failed to connect to authentication server');
       }
       const data = await res.json();
-      const user = data.find((u: { Email: string; Password: string | number }) => u.Email === email.trim() && String(u.Password) === password.trim());
+      const user = data.find((u: { Email: string; Password: string | number; Role?: string[] }) => u.Email === email.trim() && String(u.Password) === password.trim());
       
       if (user) {
         // Use the part before @ as the username, or just the email if no @ is present
         const displayName = email.includes('@') ? email.split('@')[0] : email;
-        onLogin(displayName);
+        onLogin(displayName, user.Role || []);
       } else {
         setError('No access. Invalid email or password.');
       }

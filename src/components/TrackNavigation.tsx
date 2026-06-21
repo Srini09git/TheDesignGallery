@@ -2,16 +2,19 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutGrid, Palette, Trophy, LayoutDashboard } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
+import { LayoutGrid, Palette, Trophy, LayoutDashboard, BookOpen, Briefcase } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-export type Track = 'dashboard' | 'ui-ux' | 'graphic-design' | 'challenges';
+export type Track = 'dashboard' | 'ui-ux' | 'graphic-design' | 'challenges' | 'interview' | 'placement';
 
 const tracks: { id: Track; label: string; icon: React.ElementType; href: string }[] = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, href: '/' },
   { id: 'ui-ux', label: 'UI/UX', icon: LayoutGrid, href: '/ui-ux' },
   { id: 'graphic-design', label: 'Graphic Design', icon: Palette, href: '/graphic-design' },
   { id: 'challenges', label: 'Challenges', icon: Trophy, href: '/challenges' },
+  { id: 'interview', label: 'Interview Q&A', icon: BookOpen, href: '/interview' },
+  { id: 'placement', label: 'Placement', icon: Briefcase, href: '/placement' },
 ];
 
 interface TrackNavigationProps {
@@ -20,11 +23,26 @@ interface TrackNavigationProps {
 
 const TrackNavigation = ({ mobile = false }: TrackNavigationProps) => {
   const pathname = usePathname();
+  const { user } = useAuth();
+
+  const visibleTracks = tracks.filter((t) => {
+    if (t.id === 'dashboard' || t.id === 'placement') return true; // Always visible
+    if (!user || !user.roles) return false;
+
+    if (t.id === 'ui-ux' && user.roles.includes('UIUX')) return true;
+    if (t.id === 'graphic-design' && user.roles.includes('GraphicDesign')) return true;
+    if (t.id === 'challenges' && user.roles.includes('Challenges')) return true;
+    if (t.id === 'interview' && user.roles.includes('InterviewQ&S')) return true;
+    
+    return false;
+  });
 
   const getActiveTrack = (): Track => {
     if (pathname === '/ui-ux') return 'ui-ux';
     if (pathname === '/graphic-design') return 'graphic-design';
     if (pathname === '/challenges') return 'challenges';
+    if (pathname === '/interview') return 'interview';
+    if (pathname === '/placement') return 'placement';
     return 'dashboard';
   };
 
@@ -34,7 +52,7 @@ const TrackNavigation = ({ mobile = false }: TrackNavigationProps) => {
   if (mobile) {
     return (
       <nav className="flex flex-col gap-1">
-        {tracks.map((track) => {
+        {visibleTracks.map((track) => {
           const Icon = track.icon;
           const isActive = activeTrack === track.id;
           return (
@@ -60,7 +78,7 @@ const TrackNavigation = ({ mobile = false }: TrackNavigationProps) => {
   // Desktop: horizontal pill row
   return (
     <div className="flex items-center gap-1.5 px-1">
-      {tracks.map((track) => {
+      {visibleTracks.map((track) => {
         const Icon = track.icon;
         const isActive = activeTrack === track.id;
         return (

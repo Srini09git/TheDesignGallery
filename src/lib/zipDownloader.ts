@@ -5,7 +5,7 @@ import { Poster } from '@/types/poster';
 export const downloadPosterZip = async (
   poster: Poster,
   isCompleted: boolean,
-  onToggleCompleted: (id: number) => void,
+  onMarkCompleted: (id: number) => void,
   onStartProgress?: () => void,
   onEndProgress?: () => void
 ) => {
@@ -40,10 +40,6 @@ export const downloadPosterZip = async (
     URL.revokeObjectURL(link.href);
 
     toast.success('Download completed successfully!', { id: toastId });
-    
-    if (!isCompleted) {
-      onToggleCompleted(poster.id);
-    }
   } catch (error) {
     console.error('Error generating zip:', error);
     toast.error('Failed to package images into ZIP.', { id: toastId });

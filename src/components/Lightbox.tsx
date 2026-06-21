@@ -11,15 +11,19 @@ interface LightboxProps {
   poster: Poster | null;
   onClose: () => void;
   isCompleted?: boolean;
-  onToggleCompleted?: (id: number) => void;
+  onMarkCompleted?: (id: number) => void;
+  onMarkDownloaded?: (id: number) => void;
 }
 
-const Lightbox = ({ poster, onClose, isCompleted = false, onToggleCompleted }: LightboxProps) => {
+const Lightbox = ({ poster, onClose, isCompleted = false, onMarkCompleted, onMarkDownloaded }: LightboxProps) => {
   const [isLiked, setIsLiked] = useState(false);
 
   if (!poster) return null;
 
   const handleDownload = async () => {
+    if (onMarkDownloaded) {
+      onMarkDownloaded(poster.id);
+    }
     try {
       const response = await fetch(poster.image);
       const blob = await response.blob();
@@ -61,10 +65,11 @@ const Lightbox = ({ poster, onClose, isCompleted = false, onToggleCompleted }: L
     }
   };
 
-  const handleToggleCompleted = () => {
-    if (onToggleCompleted) {
-      onToggleCompleted(poster.id);
-      toast.success(isCompleted ? 'Removed from completed' : 'Marked as completed!');
+  const handleManualToggleComplete = () => {
+    if (isCompleted) return;
+    if (onMarkCompleted) {
+      onMarkCompleted(poster.id);
+      toast.success('Marked as completed!');
     }
   };
 
@@ -143,16 +148,17 @@ const Lightbox = ({ poster, onClose, isCompleted = false, onToggleCompleted }: L
             </Button>
             
             <Button
-              onClick={handleToggleCompleted}
-              variant={isCompleted ? "secondary" : "outline"}
+              onClick={handleManualToggleComplete}
+              disabled={isCompleted}
+              variant="outline"
               className={cn(
-                "rounded-full px-8 py-6 text-lg font-medium bg-green-800",
+                "rounded-full px-8 py-6 text-lg font-medium",
                 isCompleted 
-                  ? "bg-accent text-accent-foreground hover:bg-accent/80" 
+                  ? "bg-accent/80 text-accent-foreground opacity-90 cursor-not-allowed" 
                   : "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
               )}
             >
-              <CheckCircle2 className={cn("w-5 h-5 mr-2 ", isCompleted && "fill-current")} />
+              <CheckCircle2 className={cn("w-5 h-5 mr-2", isCompleted && "fill-current")} />
               {isCompleted ? 'Completed' : 'Mark Complete'}
             </Button>
           </div>

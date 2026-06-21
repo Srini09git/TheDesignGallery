@@ -13,14 +13,16 @@ interface UiUxLightboxProps {
   poster: Poster | null;
   onClose: () => void;
   isCompleted: boolean;
-  onToggleCompleted: (id: number) => void;
+  onMarkCompleted: (id: number) => void;
+  onMarkDownloaded: (id: number) => void;
 }
 
 export default function UiUxLightbox({
   poster,
   onClose,
   isCompleted,
-  onToggleCompleted,
+  onMarkCompleted,
+  onMarkDownloaded,
 }: UiUxLightboxProps) {
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [isZipping, setIsZipping] = useState(false);
@@ -43,21 +45,24 @@ export default function UiUxLightbox({
   };
 
   const handleDownloadZip = () => {
+    onMarkDownloaded(poster.id);
     downloadPosterZip(
       poster,
       isCompleted,
-      onToggleCompleted,
+      onMarkCompleted,
       () => setIsZipping(true),
       () => setIsZipping(false)
     );
   };
 
   const handleManualToggleComplete = () => {
-    onToggleCompleted(poster.id);
-    toast.success(isCompleted ? 'Task marked as active' : 'Task marked as Completed!');
+    if (isCompleted) return;
+    onMarkCompleted(poster.id);
+    toast.success('Task marked as Completed!');
   };
 
   const handleDownloadSingleImage = async (imgUrl: string) => {
+    onMarkDownloaded(poster.id);
     try {
       const response = await fetch(imgUrl);
       const blob = await response.blob();
@@ -237,16 +242,17 @@ export default function UiUxLightbox({
 
             <Button
               onClick={handleManualToggleComplete}
-              variant={isCompleted ? "outline" : "outline"}
+              disabled={isCompleted}
+              variant="outline"
               className={cn(
-                "rounded-2xl py-6 font-semibold border-border hover:bg-secondary/50",
+                "rounded-2xl py-6 font-semibold border-border hover:bg-secondary/50 transition-all",
                 isCompleted
-                  ? "text-rose-500 border-rose-200 dark:border-rose-900/30 hover:bg-rose-500/5"
+                  ? "text-emerald-500 border-emerald-200 dark:border-emerald-900/30 bg-emerald-500/5 opacity-90"
                   : "text-foreground"
               )}
             >
-              <CheckCircle2 className={cn("w-4 h-4 mr-2", isCompleted && "fill-emerald-500/10 text-emerald-500")} />
-              {isCompleted ? 'Mark Active' : 'Mark Complete'}
+              <CheckCircle2 className={cn("w-4 h-4 mr-2", isCompleted && "fill-emerald-500/20 text-emerald-500")} />
+              {isCompleted ? 'Completed' : 'Mark Complete'}
             </Button>
           </div>
 

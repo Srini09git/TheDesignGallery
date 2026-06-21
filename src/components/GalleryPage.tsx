@@ -10,17 +10,22 @@ import Lightbox from '@/components/Lightbox';
 import UiUxCard from '@/components/UiUxCard';
 import UiUxLightbox from '@/components/UiUxLightbox';
 import AppShell from '@/components/AppShell';
-import { Loader2, Lock, ChevronDown } from 'lucide-react';
+import { Loader2, Lock, ChevronDown, ShieldAlert } from 'lucide-react';
 import { downloadPosterZip } from '@/lib/zipDownloader';
+import { useAuth } from '@/hooks/useAuth';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import InterviewCard from '@/components/InterviewCard';
 
-type GalleryTrack = 'ui-ux' | 'graphic-design' | 'challenges';
+type GalleryTrack = 'ui-ux' | 'graphic-design' | 'challenges' | 'interview';
 
 interface GalleryPageProps {
   track: GalleryTrack;
 }
 
 export default function GalleryPage({ track }: GalleryPageProps) {
-  const { completedIds, toggleCompleted, isCompleted } = useCompleted();
+  const { user } = useAuth();
+  const { completedIds, markCompleted, isCompleted, getCompletionDate, markDownloaded, getDownloadDate } = useCompleted();
   const [zippingIds, setZippingIds] = useState<number[]>([]);
   const [lockMessage, setLockMessage] = useState<string | null>(null);
   const {
@@ -52,6 +57,58 @@ export default function GalleryPage({ track }: GalleryPageProps) {
     : posters;
 
   const isUiuxLike = track === 'ui-ux' || track === 'challenges';
+  const isInterview = track === 'interview';
+
+  // Role mapping for interview categories
+  const roleMappings: Record<string, string[]> = {
+    'UIUX': ['UiUx'],
+    'GraphicDesign': ['Graphic design'],
+    'Frontend': ['Frontend'],
+    'Backend': ['Backend'],
+    'WebDevelopment': ['Frontend', 'Backend']
+  };
+
+  const userAllowedCategories = user?.roles?.flatMap(r => roleMappings[r] || []) || [];
+  console.log("User roles:", user?.roles);
+  console.log("User Allowed Categories:", userAllowedCategories);
+  
+  const allowedCategories = isInterview 
+    ? categories.filter(c => c === 'all' || userAllowedCategories.includes(c))
+    : categories;
+
+  const finalVisiblePosters = isInterview
+    ? visiblePosters.filter(p => userAllowedCategories.includes(p.category))
+    : visiblePosters;
+
+  // Check RBAC Authorization
+  const hasAccess = () => {
+    if (!user || !user.roles) return false;
+    if (track === 'ui-ux' && user.roles.includes('UIUX')) return true;
+    if (track === 'graphic-design' && user.roles.includes('GraphicDesign')) return true;
+    if (track === 'challenges' && user.roles.includes('Challenges')) return true;
+    if (track === 'interview' && (user.roles.includes('InterviewQ&S') || userAllowedCategories.length > 0)) return true;
+    return false;
+  };
+
+  if (!hasAccess()) {
+    return (
+      <AppShell>
+        <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4 animate-fade-in">
+          <div className="w-20 h-20 bg-destructive/10 text-destructive rounded-3xl flex items-center justify-center mb-6 shadow-soft">
+            <ShieldAlert className="w-10 h-10" />
+          </div>
+          <h2 className="text-3xl font-display font-bold text-foreground mb-4">Access Denied</h2>
+          <p className="text-muted-foreground mb-8 max-w-md mx-auto leading-relaxed">
+            You do not have the required permissions to view the {track === 'ui-ux' ? 'UI/UX' : track === 'graphic-design' ? 'Graphic Design' : track === 'challenges' ? 'Challenges' : 'Interview Q&A'} track. 
+            Please request access from your instructor or select another track.
+          </p>
+          <Button asChild className="rounded-xl h-12 px-8 gradient-primary text-white shadow-soft hover:shadow-hover hover:scale-105 transition-all">
+            <Link href="/">Back to Dashboard</Link>
+          </Button>
+        </div>
+      </AppShell>
+    );
+  }
 
   return (
     <AppShell>
@@ -62,17 +119,19 @@ export default function GalleryPage({ track }: GalleryPageProps) {
         <div className="bg-card/25 backdrop-blur-md rounded-2xl border border-border/40 mb-4 p-3">
           {/* Category buttons — wrap on mobile */}
           <CategoryFilter
-            categories={categories}
+            categories={allowedCategories}
             selected={selectedCategory}
             onSelect={setSelectedCategory}
-            completedCount={completedIds.filter(id => posters.some(p => p.id === id)).length}
+            completedCount={isInterview ? undefined : completedIds.filter(id => posters.some(p => p.id === id)).length}
+            allLabel={isInterview ? "All Q&A" : undefined}
           />
 
-          {/* Level selector — sits below categories on mobile */}
-          <div className="flex items-center gap-2 mt-2.5 pt-2.5 border-t border-border/30">
-            <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider shrink-0">
-              Level:
-            </span>
+          {/* Level selector — sits below categories on mobile, hidden on interview track */}
+          {!isInterview && (
+            <div className="flex items-center gap-2 mt-2.5 pt-2.5 border-t border-border/30">
+              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider shrink-0">
+                Level:
+              </span>
             <div className="relative">
               <select
                 value={selectedLevel}
@@ -89,10 +148,31 @@ export default function GalleryPage({ track }: GalleryPageProps) {
               </div>
             </div>
           </div>
+          )}
         </div>
 
         {/* Content */}
-        {isUiuxLike ? (
+        {isInterview ? (
+          isLoading ? (
+            <div className="flex items-center justify-center py-20">
+              <Loader2 className="w-8 h-8 animate-spin text-primary" />
+            </div>
+          ) : finalVisiblePosters.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-20 text-center">
+              <p className="text-lg text-muted-foreground">No interview questions available for your roles.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-2">
+              {finalVisiblePosters.map((poster, index) => (
+                <InterviewCard
+                  key={poster.id}
+                  poster={poster}
+                  index={index}
+                />
+              ))}
+            </div>
+          )
+        ) : isUiuxLike ? (
           isLoading ? (
             <div className="flex items-center justify-center py-20">
               <Loader2 className="w-8 h-8 animate-spin text-primary" />
@@ -103,7 +183,7 @@ export default function GalleryPage({ track }: GalleryPageProps) {
             </div>
           ) : (
             <div className="flex flex-col gap-2.5 sm:gap-3 w-full">
-              {visiblePosters.map((poster, index) => {
+              {finalVisiblePosters.map((poster, index) => {
                 const isLocked = track === 'ui-ux' &&
                   index > 0 &&
                   !isCompleted(sortedUiuxPosters[index - 1].id);
@@ -123,7 +203,10 @@ export default function GalleryPage({ track }: GalleryPageProps) {
                   <UiUxCard
                     key={poster.id}
                     poster={poster}
+                    index={index}
                     isCompleted={isCompleted(poster.id)}
+                    completedAt={getCompletionDate(poster.id)}
+                    downloadedAt={getDownloadDate(poster.id)}
                     isLocked={isLocked}
                     onLockedClick={() => setLockMessage(getLockMessage())}
                     onOpen={() => setSelectedPoster(poster)}
@@ -131,7 +214,7 @@ export default function GalleryPage({ track }: GalleryPageProps) {
                       downloadPosterZip(
                         poster,
                         isCompleted(poster.id),
-                        toggleCompleted,
+                        markCompleted,
                         () => setZippingIds(prev => [...prev, poster.id]),
                         () => setZippingIds(prev => prev.filter(id => id !== poster.id))
                       );
@@ -148,6 +231,8 @@ export default function GalleryPage({ track }: GalleryPageProps) {
             isLoading={isLoading}
             onPosterClick={setSelectedPoster}
             completedIds={completedIds}
+            getCompletionDate={getCompletionDate}
+            getDownloadDate={getDownloadDate}
           />
         )}
       </div>
@@ -159,14 +244,16 @@ export default function GalleryPage({ track }: GalleryPageProps) {
             poster={selectedPoster}
             onClose={() => setSelectedPoster(null)}
             isCompleted={isCompleted(selectedPoster.id)}
-            onToggleCompleted={toggleCompleted}
+            onMarkCompleted={markCompleted}
+            onMarkDownloaded={markDownloaded}
           />
         ) : (
           <Lightbox
             poster={selectedPoster}
             onClose={() => setSelectedPoster(null)}
             isCompleted={isCompleted(selectedPoster.id)}
-            onToggleCompleted={toggleCompleted}
+            onMarkCompleted={markCompleted}
+            onMarkDownloaded={markDownloaded}
           />
         )
       )}
