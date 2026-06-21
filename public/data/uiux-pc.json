@@ -1,0 +1,30 @@
+{
+  "posters": [
+    {
+      "id": 301,
+      "title": "SaaS Platform Management Portal",
+      "category": "desktop-ui",
+      "image": "/Images/UiUx/desktop-ui.png",
+      "images": ["/Images/UiUx/desktop-ui.png"],
+      "description": "Create a dark-theme metrics dashboard for a multi-tenant enterprise software application. Incorporate real-time status alerts and collapsible widgets.",
+      "objectives": [
+        "Task 1: Design clean grid charts for KPI metrics",
+        "Task 2: Build a collapsible left sidebar layout system"
+      ],
+      "author": "Advanced"
+    },
+    {
+      "id": 304,
+      "title": "Fintech Web Analytics Portal",
+      "category": "desktop-ui",
+      "image": "/Images/UiUx/desktop-ui.png",
+      "images": ["/Images/UiUx/desktop-ui.png", "/Images/UiUx/ux.png"],
+      "description": "Create a modern, dual-axis financial chart module and secure wallet transaction log interface for a web platform. Prioritize density grid cells.",
+      "objectives": [
+        "Task 1: Design balance transaction table layouts",
+        "Task 2: Construct collapsible quick-transfer modules"
+      ],
+      "author": "Advanced"
+    }
+  ]
+}

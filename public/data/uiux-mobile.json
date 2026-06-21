@@ -1,0 +1,32 @@
+{
+  "posters": [
+    {
+      "id": 300,
+      "title": "E-Commerce Mobile App Interface",
+      "category": "mobile-screen",
+      "image": "/Images/UiUx/mobile-screen.png",
+      "images": ["/Images/UiUx/mobile-screen.png", "/Images/UiUx/ux.png"],
+      "description": "Design a high-fidelity checkout funnel and user profile dashboard for a beauty retailer app. Prioritize clean navigation structure and HSL-based brand details.",
+      "objectives": [
+        "Task 1: Design interactive product selection filters",
+        "Task 2: Optimize visual hierarchy on mobile viewport details",
+        "Task 3: Map user payment entry field interactions"
+      ],
+      "author": "Advanced"
+    },
+    {
+      "id": 303,
+      "title": "Food Delivery Tracker Mobile App",
+      "category": "mobile-screen",
+      "image": "/Images/UiUx/mobile-screen.png",
+      "images": ["/Images/UiUx/mobile-screen.png", "/Images/UiUx/ux.png"],
+      "description": "Design a real-time order tracking map view and driver notification drawer for a local food delivery app. Focus on custom map markers and slide-up modal gestures.",
+      "objectives": [
+        "Task 1: Design tracking map layout and markers",
+        "Task 2: Build driver bio card and delivery ETA badge",
+        "Task 3: Map real-time chat bubble overlay interactions"
+      ],
+      "author": "Intermediate"
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+"use client";
+
 import { Category } from '@/types/poster';
 import { cn } from '@/lib/utils';
 import { CheckCircle2 } from 'lucide-react';
@@ -17,6 +19,9 @@ const categoryLabels: Record<Category, string> = {
   flyer: 'Flyers',
   banner: 'Banners',
   completed: 'Completed',
+  'mobile-screen': 'Mobile Screen',
+  'desktop-ui': 'Desktop Ui',
+  ux: 'UX',
 };
 
 const CategoryFilter = ({ categories, selected, onSelect, completedCount = 0 }: CategoryFilterProps) => {

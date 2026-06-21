@@ -1,3 +1,5 @@
+"use client";
+
 import { Poster } from '@/types/poster';
 import PosterCard from './PosterCard';
 import { Loader2 } from 'lucide-react';

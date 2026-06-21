@@ -1,3 +1,5 @@
+"use client";
+
 import { X, Download, Heart, Share2, CheckCircle2 } from 'lucide-react';
 import { Poster } from '@/types/poster';
 import { Button } from '@/components/ui/button';
