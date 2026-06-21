@@ -3,8 +3,13 @@ import "./globals.css";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
-  title: "The Design Gallery",
-  description: "Browse and download beautiful poster and logo designs.",
+  title: "CWlearning",
+  description: "CWlearning — Track your UI/UX, graphic design, and challenges progress.",
+  icons: {
+    icon: "/favicon.ico.png",
+    shortcut: "/favicon.ico.png",
+    apple: "/favicon.ico.png",
+  },
 };
 
 export default function RootLayout({

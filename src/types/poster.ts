@@ -9,4 +9,4 @@ export interface Poster {
   author: string;
 }
 
-export type Category = 'all' | 'BrandLogo' | 'logo' | 'poster' | 'flyer' | 'banner' | 'completed' | 'mobile-screen' | 'desktop-ui' | 'ux';
+export type Category = 'all' | 'BrandLogo' | 'logo' | 'poster' | 'flyer' | 'banner' | 'completed' | 'mobile-screen' | 'desktop-ui' | 'ux' | 'challenge' | 'preparation';

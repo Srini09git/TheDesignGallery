@@ -22,29 +22,31 @@ const categoryLabels: Record<Category, string> = {
   'mobile-screen': 'Mobile Screen',
   'desktop-ui': 'Desktop Ui',
   ux: 'UX',
+  challenge: 'Challenges',
+  preparation: 'Interview Prep',
 };
 
 const CategoryFilter = ({ categories, selected, onSelect, completedCount = 0 }: CategoryFilterProps) => {
   return (
-    <div className="flex flex-wrap gap-2 justify-center py-6">
+    <div className="flex flex-wrap gap-1.5 sm:gap-2">
       {categories.map((category) => (
         <button
           key={category}
           onClick={() => onSelect(category)}
           className={cn(
-            'px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2',
+            'px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap',
             selected === category
               ? 'gradient-primary text-primary-foreground shadow-soft'
               : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
           )}
         >
           {category === 'completed' && (
-            <CheckCircle2 className="w-4 h-4" />
+            <CheckCircle2 className="w-3 h-3" />
           )}
           {categoryLabels[category]}
           {category === 'completed' && completedCount > 0 && (
             <span className={cn(
-              "ml-1 px-2 py-0.5 text-xs rounded-full",
+              "px-1.5 py-0.5 text-[10px] rounded-full font-bold",
               selected === category
                 ? "bg-primary-foreground/20 text-primary-foreground"
                 : "bg-primary/10 text-primary"

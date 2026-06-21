@@ -1,0 +1,49 @@
+{
+  "posters": [
+    {
+      "id": 401,
+      "title": "SaaS Landing Page Redesign",
+      "category": "challenge",
+      "image": "/Images/UiUx/desktop-ui.png",
+      "images": ["/Images/UiUx/desktop-ui.png"],
+      "description": "Redesign the home page for a modern cloud analytics platform. Focus on building trust, communicating key value propositions, and optimizing the call-to-action sections.",
+      "author": "Intermediate"
+    },
+    {
+      "id": 402,
+      "title": "Dark Mode Dashboard",
+      "category": "challenge",
+      "image": "/Images/UiUx/desktop-ui.png",
+      "images": ["/Images/UiUx/desktop-ui.png"],
+      "description": "Create a high-density, dark mode dashboard layout for server resource statistics, active log streams, and container health metrics.",
+      "author": "Advanced"
+    },
+    {
+      "id": 403,
+      "title": "Fintech Mobile Checkout Flow",
+      "category": "challenge",
+      "image": "/Images/UiUx/mobile-screen.png",
+      "images": ["/Images/UiUx/mobile-screen.png"],
+      "description": "Design a seamless mobile multi-step checkout flow for international bank transfers. Ensure clear currency exchange conversions and payment status feedback.",
+      "author": "Advanced"
+    },
+    {
+      "id": 404,
+      "title": "E-Learning Dashboard",
+      "category": "challenge",
+      "image": "/Images/UiUx/desktop-ui.png",
+      "images": ["/Images/UiUx/desktop-ui.png"],
+      "description": "Build an online class hub UI for young learners. Emphasize bright and inviting colors, game-like progress badges, and direct navigation keys.",
+      "author": "Easy"
+    },
+    {
+      "id": 405,
+      "title": "Smart Home App Control Panel",
+      "category": "challenge",
+      "image": "/Images/UiUx/mobile-screen.png",
+      "images": ["/Images/UiUx/mobile-screen.png"],
+      "description": "Create a unified control interface for domestic heating, audio speakers, and indoor ambient lighting. Prioritize clear tap and slide control widgets.",
+      "author": "Intermediate"
+    }
+  ]
+}

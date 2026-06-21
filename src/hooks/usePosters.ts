@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Poster, Category } from '@/types/poster';
+import { Track } from '@/components/TrackNavigation';
 
-export const usePosters = (completedIds: number[] = [], track: 'graphic-design' | 'ui-ux' = 'graphic-design') => {
+export const usePosters = (completedIds: number[] = [], track: Track = 'graphic-design') => {
   const [posters, setPosters] = useState<Poster[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState<Category>('all');
+  const [selectedCategory, setSelectedCategory] = useState<Category>(track === 'ui-ux' ? 'mobile-screen' : 'all');
+  const [selectedLevel, setSelectedLevel] = useState<string>('all');
 
   useEffect(() => {
-    setSelectedCategory('all');
+    setSelectedCategory(track === 'ui-ux' ? 'mobile-screen' : 'all');
+    setSelectedLevel('all');
   }, [track]);
 
   useEffect(() => {
@@ -28,6 +31,10 @@ export const usePosters = (completedIds: number[] = [], track: 'graphic-design' 
             ...(pcData.posters || []),
             ...(uxData.posters || [])
           ]);
+        } else if (track === 'challenges') {
+          const res = await fetch('/data/challenges.json');
+          const data = await res.json();
+          setPosters(data.posters || []);
         } else {
           const [postersRes, logosRes] = await Promise.all([
             fetch('/data/posters.json'),
@@ -55,7 +62,10 @@ export const usePosters = (completedIds: number[] = [], track: 'graphic-design' 
 
   const categories = (() => {
     if (track === 'ui-ux') {
-      return ['all', ...uiuxCategories, 'completed'] as Category[];
+      return [...uiuxCategories, 'completed'] as Category[];
+    }
+    if (track === 'challenges') {
+      return ['all', 'completed'] as Category[];
     }
     return ['all', ...graphicCategories, 'completed'] as Category[];
   })();
@@ -65,16 +75,25 @@ export const usePosters = (completedIds: number[] = [], track: 'graphic-design' 
       if (track === 'ui-ux') {
         return posters.filter(poster => uiuxCategories.includes(poster.category as Category));
       }
+      if (track === 'challenges') {
+        return posters.filter(poster => poster.category === 'challenge');
+      }
       return posters.filter(poster => graphicCategories.includes(poster.category as Category));
     })();
 
+    const levelFiltered = (() => {
+      if (selectedLevel === 'all') return trackPosters;
+      const queryLevel = selectedLevel.toLowerCase() === 'easy' ? 'easy' : selectedLevel.toLowerCase();
+      return trackPosters.filter(poster => poster.author.toLowerCase() === queryLevel);
+    })();
+
     if (selectedCategory === 'all') {
-      return trackPosters;
+      return levelFiltered;
     }
     if (selectedCategory === 'completed') {
-      return trackPosters.filter(poster => completedIds.includes(poster.id));
+      return levelFiltered.filter(poster => completedIds.includes(poster.id));
     }
-    return trackPosters.filter(poster => poster.category === selectedCategory);
+    return levelFiltered.filter(poster => poster.category === selectedCategory);
   })();
 
   return {
@@ -84,5 +103,8 @@ export const usePosters = (completedIds: number[] = [], track: 'graphic-design' 
     selectedCategory,
     setSelectedCategory,
     categories,
+    selectedLevel,
+    setSelectedLevel,
   };
 };
+

@@ -2,7 +2,7 @@
 
 import { Poster } from '@/types/poster';
 import { cn } from '@/lib/utils';
-import { Download, Eye, CheckCircle2, Lock } from 'lucide-react';
+import { Eye, CheckCircle2, Lock } from 'lucide-react';
 
 interface UiUxCardProps {
   poster: Poster;
@@ -24,6 +24,8 @@ const categoryLabels: Record<string, string> = {
   'mobile-screen': 'Mobile Screen',
   'desktop-ui': 'Desktop UI',
   ux: 'UX Map',
+  challenge: 'Challenge',
+  preparation: 'Interview Prep',
 };
 
 export default function UiUxCard({
@@ -35,129 +37,111 @@ export default function UiUxCard({
   isLocked = false,
   onLockedClick,
 }: UiUxCardProps) {
-  const taskNum = poster.id === 300 ? 1 : poster.id === 301 ? 2 : poster.id === 302 ? 3 : poster.id - 299;
+  const taskNum = (() => {
+    if (poster.id >= 500) return poster.id - 500;
+    if (poster.id >= 400) return poster.id - 400;
+    if (poster.id >= 300) return poster.id - 299;
+    return poster.id;
+  })();
 
   return (
-    <div 
+    <div
       onClick={isLocked ? onLockedClick : onOpen}
       className={cn(
-        "relative group bg-card text-card-foreground rounded-2xl border border-border overflow-hidden shadow-card transition-all duration-300 flex flex-col justify-between cursor-pointer",
-        isLocked 
-          ? "opacity-75 hover:border-destructive/30" 
-          : "hover:shadow-hover hover:scale-[1.01] hover:border-primary/20"
+        "relative group bg-card text-card-foreground rounded-2xl border border-border overflow-hidden shadow-card transition-all duration-300 cursor-pointer w-full",
+        isLocked
+          ? "opacity-75 hover:border-destructive/30"
+          : "hover:shadow-hover hover:border-primary/20"
       )}
     >
-      {/* Top Banner Accent */}
-      <div className={cn("absolute top-0 left-0 w-full h-[4px]", isLocked ? "bg-muted" : "gradient-primary")} />
+      {/* Left accent border */}
+      <div className={cn("absolute top-0 left-0 w-1 h-full", isLocked ? "bg-muted" : "gradient-primary")} />
 
-      {/* Card Body */}
-      <div className="p-6 flex flex-col flex-grow justify-center min-h-[140px]">
-        {/* Header Badges */}
-        <div className="flex items-center justify-between gap-2 mb-4">
-          <span className={cn(
-            "text-xs font-semibold uppercase tracking-wider",
-            isLocked ? "text-muted-foreground" : "text-primary"
-          )}>
-            Task {taskNum}
-          </span>
-          <div className="flex items-center gap-2">
+      {/* Card content: mobile = stacked, desktop = row */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 p-4 sm:p-5 pl-5 sm:pl-6">
+
+        {/* Left: Text Content */}
+        <div className="flex flex-col gap-1.5 min-w-0">
+          {/* Task label + badges */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className={cn(
+              "text-[11px] font-bold uppercase tracking-widest",
+              isLocked ? "text-muted-foreground" : "text-primary"
+            )}>
+              Task {taskNum}
+            </span>
+
             {isLocked ? (
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-destructive/10 text-destructive border border-destructive/20 flex items-center gap-1.5 animate-pulse">
-                <Lock className="w-3 h-3" />
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-destructive/10 text-destructive border border-destructive/20 flex items-center gap-1">
+                <Lock className="w-2.5 h-2.5" />
                 Locked
               </span>
             ) : (
               <>
                 <span className={cn(
-                  "px-2.5 py-0.5 rounded-full text-xs font-medium border",
+                  "px-2 py-0.5 rounded-full text-[10px] font-semibold border",
                   difficultyColors[poster.author] || difficultyColors.Easy
                 )}>
                   {poster.author}
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary text-secondary-foreground">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-secondary text-secondary-foreground">
                   {categoryLabels[poster.category] || poster.category}
                 </span>
+                {isCompleted && (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1 sm:hidden">
+                    <CheckCircle2 className="w-2.5 h-2.5" />
+                    Done
+                  </span>
+                )}
               </>
             )}
           </div>
+
+          {/* Title */}
+          <h3 className={cn(
+            "text-sm sm:text-base font-bold font-display leading-tight transition-colors duration-200",
+            isLocked ? "text-muted-foreground" : "group-hover:text-primary text-foreground"
+          )}>
+            {poster.title}
+          </h3>
         </div>
 
-        {/* Title */}
-        <h3 className={cn(
-          "text-xl font-bold font-display leading-tight mb-2 transition-colors duration-200",
-          isLocked ? "text-muted-foreground" : "group-hover:text-primary"
-        )}>
-          {poster.title}
-        </h3>
-      </div>
-
-      {/* Card Footer Actions */}
-      <div className="p-6 pt-0 border-t border-border/45 bg-secondary/10 flex gap-2 items-center">
-        {isLocked ? (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onLockedClick?.();
-            }}
-            className="w-full px-4 py-2.5 rounded-xl text-xs font-semibold bg-secondary/80 text-secondary-foreground hover:bg-secondary active:scale-95 transition-all duration-200 flex items-center justify-center gap-1.5 border border-border"
-          >
-            <Lock className="w-4 h-4 text-destructive" />
-            <span>Locked - Complete Task {taskNum - 1}</span>
-          </button>
-        ) : (
-          <>
+        {/* Right: Action buttons — on mobile they go below, on sm+ they're inline */}
+        <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
+          {isLocked ? (
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                onOpen();
+                onLockedClick?.();
               }}
-              className="flex-1 px-4 py-2.5 rounded-xl text-xs font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/80 active:scale-95 transition-all duration-200 flex items-center justify-center gap-1.5 border border-border"
+              className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-secondary/80 text-secondary-foreground hover:bg-secondary active:scale-95 transition-all duration-200 flex items-center gap-1.5 border border-border"
             >
-              <Eye className="w-4 h-4" />
-              <span>Open Task</span>
+              <Lock className="w-3.5 h-3.5 text-destructive" />
+              <span>Locked</span>
             </button>
-
-            {isCompleted ? (
-              <button
-                disabled
-                onClick={(e) => e.stopPropagation()}
-                className="flex-1 px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-1.5 border border-emerald-500/20 shadow-sm cursor-default"
-              >
-                <CheckCircle2 className="w-4 h-4" />
-                <span>Completed</span>
-              </button>
-            ) : (
+          ) : (
+            <>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  onDownload();
+                  onOpen();
                 }}
-                disabled={isDownloading}
-                className={cn(
-                  "flex-1 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 flex items-center justify-center gap-1.5 shadow-soft border",
-                  isDownloading 
-                    ? "bg-muted text-muted-foreground border-border cursor-not-allowed" 
-                    : "gradient-primary text-primary-foreground border-transparent hover:brightness-105 active:scale-95"
-                )}
+                className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/80 active:scale-95 transition-all duration-200 flex items-center gap-1.5 border border-border"
               >
-                {isDownloading ? (
-                  <>
-                    <span className="animate-spin w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full" />
-                    <span>Zipping...</span>
-                  </>
-                ) : (
-                  <>
-                    <Download className="w-4 h-4" />
-                    <span>Download</span>
-                  </>
-                )}
+                <Eye className="w-3.5 h-3.5" />
+                <span>Open</span>
               </button>
-            )}
-          </>
-        )}
+
+              {isCompleted && (
+                <span className="hidden sm:flex px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 items-center gap-1.5 border border-emerald-500/20">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Completed</span>
+                </span>
+              )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
 }
-
-
