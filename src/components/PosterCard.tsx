@@ -63,7 +63,7 @@ const PosterCard = ({ poster, onClick, index, isCompleted = false, completedAt, 
         )}
         
         <img
-          src={poster.image}
+          src={poster.image || ''}
           alt={poster.title}
           className={cn(
             'w-full object-cover transition-opacity duration-300',

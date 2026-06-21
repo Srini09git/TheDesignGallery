@@ -34,7 +34,7 @@ export default function UiUxLightbox({
 
   if (!poster) return null;
 
-  const images = poster.images || [poster.image];
+  const images = poster.images || (poster.image ? [poster.image] : []);
 
   const handlePrev = () => {
     setActiveImgIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));

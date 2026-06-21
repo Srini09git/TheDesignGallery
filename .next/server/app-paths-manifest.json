@@ -1,6 +1,6 @@
 {
-  "/challenges/page": "app/challenges/page.js",
   "/graphic-design/page": "app/graphic-design/page.js",
+  "/challenges/page": "app/challenges/page.js",
   "/interview/page": "app/interview/page.js",
   "/ui-ux/page": "app/ui-ux/page.js",
   "/placement/page": "app/placement/page.js"

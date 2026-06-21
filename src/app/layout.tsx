@@ -3,8 +3,8 @@ import "./globals.css";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
-  title: "CWlearning",
-  description: "CWlearning — Track your UI/UX, graphic design, and challenges progress.",
+  title: "CWLearning",
+  description: "CWLearning — Track your UI/UX, graphic design, and challenges progress.",
   icons: {
     icon: "/favicon.ico.png",
     shortcut: "/favicon.ico.png",

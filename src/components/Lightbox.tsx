@@ -25,6 +25,7 @@ const Lightbox = ({ poster, onClose, isCompleted = false, onMarkCompleted, onMar
       onMarkDownloaded(poster.id);
     }
     try {
+      if (!poster.image) throw new Error('No image available to download');
       const response = await fetch(poster.image);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
@@ -123,7 +124,7 @@ const Lightbox = ({ poster, onClose, isCompleted = false, onMarkCompleted, onMar
             </div>
           )}
           <img
-            src={poster.image}
+            src={poster.image || ''}
             alt={poster.title}
             className={cn(
               "w-full h-auto max-h-[70vh] object-contain rounded-2xl shadow-hover",
