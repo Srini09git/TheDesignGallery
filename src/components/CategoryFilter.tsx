@@ -24,7 +24,6 @@ const categoryLabels: Record<Category, string> = {
   'desktop-ui': 'Desktop Ui',
   ux: 'UX',
   challenge: 'Challenges',
-  preparation: 'Interview Prep',
   Frontend: 'Frontend',
   Backend: 'Backend',
   UiUx: 'UI/UX',
