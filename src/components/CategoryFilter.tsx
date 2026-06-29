@@ -28,6 +28,8 @@ const categoryLabels: Record<Category, string> = {
   Backend: 'Backend',
   UiUx: 'UI/UX',
   'Graphic design': 'Graphic Design',
+  'UI design': 'UI Design',
+  'UX': 'UX Design',
 };
 
 const CategoryFilter = ({ categories, selected, onSelect, completedCount = 0, allLabel }: CategoryFilterProps) => {

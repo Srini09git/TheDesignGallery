@@ -2,7 +2,7 @@
 
 import { Poster } from '@/types/poster';
 import { cn, calculateDuration } from '@/lib/utils';
-import { Eye, CheckCircle2, Lock, Clock } from 'lucide-react';
+import { Eye, CheckCircle2, Lock, Clock, Play } from 'lucide-react';
 
 interface UiUxCardProps {
   poster: Poster;
@@ -45,6 +45,7 @@ export default function UiUxCard({
 }: UiUxCardProps) {
   const taskNum = index + 1;
   const duration = completedAt && downloadedAt ? calculateDuration(downloadedAt, completedAt) : null;
+  const hasImage = poster.image !== false && (typeof poster.image === 'string' || (poster.images && poster.images.length > 0));
 
   return (
     <div
@@ -82,16 +83,16 @@ export default function UiUxCard({
               <>
                 <span className={cn(
                   "px-2 py-0.5 rounded-full text-[10px] font-semibold border",
-                  difficultyColors[poster.author] || difficultyColors.Easy
+                  difficultyColors[poster.level || poster.author] || difficultyColors.Easy
                 )}>
-                  {poster.author}
+                  {poster.level || poster.author}
                 </span>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-secondary text-secondary-foreground">
                   {categoryLabels[poster.category] || poster.category}
                 </span>
                 {downloadedAt && (
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 sm:hidden">
-                    ↓ {downloadedAt}
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 sm:hidden flex items-center gap-1">
+                    {hasImage ? '↓' : <Play className="w-2.5 h-2.5" />} {downloadedAt}
                   </span>
                 )}
                 {isCompleted && (
@@ -147,8 +148,17 @@ export default function UiUxCard({
 
               {downloadedAt && (
                 <span className="hidden sm:flex px-3 py-1.5 rounded-xl text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 items-center gap-1.5 border border-blue-500/20">
-                  <span className="font-bold">↓</span>
-                  <span>{downloadedAt}</span>
+                  {hasImage ? (
+                    <>
+                      <span className="font-bold">↓</span>
+                      <span>{downloadedAt}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Play className="w-3 h-3" />
+                      <span>{downloadedAt}</span>
+                    </>
+                  )}
                 </span>
               )}
 

@@ -1,0 +1,40 @@
+{
+  "posters": [
+    {
+      "id": 403,
+      "title": "Tech Conference Branding",
+      "category": "Graphic design",
+      "author": "Easy",
+      "level": "Easy",
+      "des": "Create a bold branding concept for an upcoming developer conference, including posters and badges.",
+      "idea": "Use neon accents and isometric grid patterns to convey a 'future of tech' vibe.",
+      "asset_image": "/Images/UiUx/desktop-ui.png",
+      "image": "/Images/UiUx/desktop-ui.png",
+      "images": ["/Images/UiUx/desktop-ui.png"]
+    },
+    {
+      "id": 408,
+      "title": "Organic Coffee Packaging",
+      "category": "Graphic design",
+      "level": "Intermediate",
+      "author": "Intermediate",
+      "des": "Design a series of packaging labels for a sustainable, fair-trade coffee company.",
+      "idea": "Combine earthy, muted tones with rough typography to emphasize the organic nature of the beans.",
+      "asset_image": "/Images/UiUx/desktop-ui.png",
+      "image": "/Images/UiUx/desktop-ui.png",
+      "images": ["/Images/UiUx/desktop-ui.png"]
+    },
+    {
+      "id": 409,
+      "title": "Music Festival Poster Series",
+      "category": "Graphic design",
+      "level": "Advanced",
+      "author": "Advanced",
+      "des": "Create a cohesive set of promotional posters for a 3-day summer indie music festival.",
+      "idea": "Utilize surreal collages and vibrant gradients to capture the energy of live music.",
+      "asset_image": "/Images/UiUx/mobile-screen.png",
+      "image": "/Images/UiUx/mobile-screen.png",
+      "images": ["/Images/UiUx/mobile-screen.png"]
+    }
+  ]
+}

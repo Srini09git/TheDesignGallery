@@ -1,0 +1,70 @@
+{
+  "posters": [
+    {
+      "id": 411,
+      "title": "Modern Login Page Design",
+      "category": "UI design",
+      "level": "Beginner",
+      "author": "Beginner",
+      "des": "Design a clean and modern login page for a mobile or web application. Focus on usability, accessibility, visual hierarchy, and creating a seamless authentication experience.",
+      "step_by_step": [
+        "Research modern login page designs",
+        "Create a low-fidelity wireframe",
+        "Design the app logo and welcome section",
+        "Add email and password input fields",
+        "Include a show/hide password toggle",
+        "Add a 'Forgot Password?' link",
+        "Design a prominent Login button",
+        "Include social login options",
+        "Add a 'Create Account' link",
+        "Design loading, success, and error states",
+        "Ensure accessibility and responsive layout",
+        "Prototype button and input interactions"
+      ]
+    },
+    {
+      "id": 412,
+      "title": "Modern Login Page Design",
+      "category": "UI Design",
+      "level": "Beginner",
+      "author": "Beginner",
+      "des": "Design a clean and modern login page for a mobile or web application. Focus on usability, accessibility, visual hierarchy, and creating a seamless authentication experience.",
+      "step_by_step": [
+        "Research modern login page designs",
+        "Create a low-fidelity wireframe",
+        "Design the app logo and welcome section",
+        "Add email and password input fields",
+        "Include a show/hide password toggle",
+        "Add a 'Forgot Password?' link",
+        "Design a prominent Login button",
+        "Include social login options",
+        "Add a 'Create Account' link",
+        "Design loading, success, and error states",
+        "Ensure accessibility and responsive layout",
+        "Prototype button and input interactions"
+      ],
+      "image": "/Images/UiUx/login-page.png",
+      "images": [
+        "/Images/UiUx/login-page.png"
+      ]
+    },
+    {
+      "id": 405,
+      "title": "Smart Home App Dashboard",
+      "category": "UI design",
+      "level": "Advanced",
+      "author": "Advanced",
+      "des": "Design a dashboard for controlling smart home devices like lights, thermostats, and security cameras.",
+      "step_by_step": [
+        "Define the core widgets needed on the dashboard",
+        "Create custom icons for each device type",
+        "Design an intuitive drag-and-drop customization flow",
+        "Add micro-interactions for toggling devices on and off"
+      ],
+      "image": "/Images/UiUx/mobile-screen.png",
+      "images": [
+        "/Images/UiUx/mobile-screen.png"
+      ]
+    }
+  ]
+}

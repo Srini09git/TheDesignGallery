@@ -34,7 +34,8 @@ export default function UiUxLightbox({
 
   if (!poster) return null;
 
-  const images = poster.images || (poster.image ? [poster.image] : []);
+  const hasImage = poster.image !== false && (typeof poster.image === 'string' || (poster.images && poster.images.length > 0));
+  const images = poster.images || (typeof poster.image === 'string' ? [poster.image] : []);
 
   const handlePrev = () => {
     setActiveImgIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -106,8 +107,9 @@ export default function UiUxLightbox({
           <X className="w-5 h-5" />
         </button>
 
-        {/* Top Section: Image Viewer */}
-        <div className="bg-muted/30 p-6 flex flex-col justify-center items-center relative border-b border-border min-h-[300px] sm:min-h-[400px]">
+        {/* Top Section: Image Viewer (Hidden if no image) */}
+        {hasImage && (
+          <div className="bg-muted/30 p-6 flex flex-col justify-center items-center relative border-b border-border min-h-[300px] sm:min-h-[400px]">
           {/* Completion Tag */}
           {isCompleted && (
             <div className="absolute top-6 left-6 z-10 flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500 text-white rounded-full text-xs font-semibold shadow-soft">
@@ -186,6 +188,7 @@ export default function UiUxLightbox({
             </p>
           )}
         </div>
+        )}
 
         {/* Bottom Section: Content & Actions Details */}
         <div className="p-6 flex flex-col space-y-6">
@@ -197,7 +200,7 @@ export default function UiUxLightbox({
                 {poster.category.replace('-', ' ')}
               </span>
               <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-secondary text-secondary-foreground border border-border/80">
-                {poster.author} Level
+                {poster.level || poster.author} Level
               </span>
             </div>
             <h2 className="text-2xl font-bold font-display leading-tight text-foreground">
@@ -211,34 +214,94 @@ export default function UiUxLightbox({
               Description
             </h4>
             <p className="text-sm text-foreground/80 leading-relaxed bg-secondary/20 p-4 rounded-2xl border border-border/30">
-              {poster.description || "Design and implement this creative challenge to develop UI/UX core workflows."}
+              {poster.des || poster.description || "Design and implement this creative challenge to develop UI/UX core workflows."}
             </p>
           </div>
 
+          {/* Step by Step */}
+          {poster.step_by_step && poster.step_by_step.length > 0 && (
+            <div className="space-y-2">
+              <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                Step by Step
+              </h4>
+              <ul className="text-sm text-foreground/80 leading-relaxed bg-secondary/20 p-4 rounded-2xl border border-border/30 list-disc list-inside space-y-1">
+                {poster.step_by_step.map((step, idx) => (
+                  <li key={idx}>{step}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Idea */}
+          {poster.idea && (
+            <div className="space-y-2">
+              <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                Idea
+              </h4>
+              <p className="text-sm text-foreground/80 leading-relaxed bg-secondary/20 p-4 rounded-2xl border border-border/30">
+                {poster.idea}
+              </p>
+            </div>
+          )}
+
+          {/* Asset Image */}
+          {poster.asset_image && (
+            <div className="space-y-2">
+              <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                Asset Image
+              </h4>
+              <div className="relative w-full max-w-sm h-48 rounded-xl overflow-hidden border border-border/40">
+                <Image
+                  src={poster.asset_image}
+                  alt="Asset"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          )}
+
           {/* Actions Footer */}
           <div className="pt-6 border-t border-border/60 flex flex-col sm:flex-row gap-3">
-            <Button
-              onClick={handleDownloadZip}
-              disabled={isZipping}
-              className={cn(
-                "flex-1 rounded-2xl py-6 font-semibold shadow-soft flex items-center justify-center gap-2",
-                isCompleted
-                  ? "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border"
-                  : "gradient-primary hover:opacity-95 text-white"
-              )}
-            >
-              {isZipping ? (
-                <>
-                  <span className="animate-spin w-4 h-4 border-2 border-current border-t-transparent rounded-full" />
-                  <span>Packaging ZIP...</span>
-                </>
-              ) : (
-                <>
-                  <Download className="w-4 h-4" />
-                  <span>Download ZIP ({images.length} Screens)</span>
-                </>
-              )}
-            </Button>
+            {hasImage ? (
+              <Button
+                onClick={handleDownloadZip}
+                disabled={isZipping}
+                className={cn(
+                  "flex-1 rounded-2xl py-6 font-semibold shadow-soft flex items-center justify-center gap-2",
+                  isCompleted
+                    ? "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border"
+                    : "gradient-primary hover:opacity-95 text-white"
+                )}
+              >
+                {isZipping ? (
+                  <>
+                    <span className="animate-spin w-4 h-4 border-2 border-current border-t-transparent rounded-full" />
+                    <span>Packaging ZIP...</span>
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-4 h-4" />
+                    <span>Download ZIP ({images.length} Screens)</span>
+                  </>
+                )}
+              </Button>
+            ) : (
+              <Button
+                onClick={() => {
+                  onMarkDownloaded(poster.id);
+                  toast.success('Task started!');
+                }}
+                className={cn(
+                  "flex-1 rounded-2xl py-6 font-semibold shadow-soft flex items-center justify-center gap-2",
+                  isCompleted
+                    ? "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border"
+                    : "gradient-primary hover:opacity-95 text-white"
+                )}
+              >
+                <span>Start Task</span>
+              </Button>
+            )}
 
             <Button
               onClick={handleManualToggleComplete}

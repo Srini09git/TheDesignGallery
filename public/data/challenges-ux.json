@@ -1,0 +1,52 @@
+{
+  "posters": [
+    {
+      "id": 402,
+      "title": "Fintech Mobile Checkout Flow",
+      "category": "UX",
+      "level": "Advanced",
+      "author": "Advanced",
+      "des": "Design a seamless mobile multi-step checkout flow for international bank transfers. Ensure clear currency exchange conversions and payment status feedback.",
+      "step_by_step": [
+        "Map out user journey from product to payment success",
+        "Design low-fidelity wireframes for each step",
+        "Test flow with sample users to identify friction",
+        "Refine layout and finalize UI handoff"
+      ],
+      "image": "/Images/UiUx/mobile-screen.png",
+      "images": ["/Images/UiUx/mobile-screen.png"]
+    },
+    {
+      "id": 406,
+      "title": "Healthcare Appointment Booking",
+      "category": "UX",
+      "level": "Intermediate",
+      "author": "Intermediate",
+      "des": "Create a user-friendly flow for elderly patients to book appointments with their doctors online.",
+      "step_by_step": [
+        "Analyze the pain points of current medical booking systems",
+        "Sketch out a simplified 3-step booking process",
+        "Design large touch targets and high-contrast typography",
+        "Develop a confirmation screen with clear instructions"
+      ],
+      "image": "/Images/UiUx/mobile-screen.png",
+      "images": ["/Images/UiUx/mobile-screen.png"]
+    },
+    {
+      "id": 407,
+      "title": "Onboarding for Fitness App",
+      "category": "UX",
+      "level": "Easy",
+      "author": "Easy",
+      "des": "Design an onboarding sequence that personalizes the workout experience without overwhelming the user.",
+      "step_by_step": [
+        "Determine the absolute minimum data needed from the user",
+        "Design engaging illustrations for each onboarding step",
+        "Implement a progress indicator (e.g., 'Step 1 of 3')",
+        "Provide a 'Skip' option for power users"
+      ],
+      "image": "/Images/UiUx/mobile-screen.png",
+      "images": ["/Images/UiUx/mobile-screen.png"]
+    }
+  ]
+}

@@ -5,11 +5,13 @@ import { Track } from '@/components/TrackNavigation';
 export const usePosters = (completedIds: number[] = [], track: Track = 'graphic-design') => {
   const [posters, setPosters] = useState<Poster[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState<Category>(track === 'ui-ux' ? 'mobile-screen' : 'all');
+  const [selectedCategory, setSelectedCategory] = useState<Category>(
+    track === 'ui-ux' ? 'mobile-screen' : track === 'challenges' ? 'UI design' : 'all'
+  );
   const [selectedLevel, setSelectedLevel] = useState<string>('all');
 
   useEffect(() => {
-    setSelectedCategory(track === 'ui-ux' ? 'mobile-screen' : 'all');
+    setSelectedCategory(track === 'ui-ux' ? 'mobile-screen' : track === 'challenges' ? 'UI design' : 'all');
     setSelectedLevel('all');
   }, [track]);
 
@@ -32,9 +34,19 @@ export const usePosters = (completedIds: number[] = [], track: Track = 'graphic-
             ...(uxData.posters || [])
           ]);
         } else if (track === 'challenges') {
-          const res = await fetch('/data/challenges.json');
-          const data = await res.json();
-          setPosters(data.posters || []);
+          const [uiRes, uxRes, graphicRes] = await Promise.all([
+            fetch('/data/challenges-ui.json'),
+            fetch('/data/challenges-ux.json'),
+            fetch('/data/challenges-graphic.json')
+          ]);
+          const uiData = await uiRes.json();
+          const uxData = await uxRes.json();
+          const graphicData = await graphicRes.json();
+          setPosters([
+            ...(uiData.posters || []),
+            ...(uxData.posters || []),
+            ...(graphicData.posters || [])
+          ]);
         } else if (track === 'interview') {
           const res = await fetch('/data/preparation.json');
           const data = await res.json();
@@ -70,7 +82,7 @@ export const usePosters = (completedIds: number[] = [], track: Track = 'graphic-
       return [...uiuxCategories, 'completed'] as Category[];
     }
     if (track === 'challenges') {
-      return ['all', 'completed'] as Category[];
+      return ['UI design', 'UX', 'Graphic design', 'completed'] as Category[];
     }
     if (track === 'interview') {
       return ['all', ...interviewCategories] as Category[];
@@ -84,7 +96,7 @@ export const usePosters = (completedIds: number[] = [], track: Track = 'graphic-
         return posters.filter(poster => uiuxCategories.includes(poster.category as Category));
       }
       if (track === 'challenges') {
-        return posters.filter(poster => poster.category === 'challenge');
+        return posters;
       }
       if (track === 'interview') {
         return posters.filter(poster => interviewCategories.includes(poster.category as Category));
