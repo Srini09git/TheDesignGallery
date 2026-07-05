@@ -2,69 +2,1045 @@
   "posters": [
     {
       "id": 411,
-      "title": "Modern Login Page Design",
+      "title": "Login Screen",
       "category": "UI design",
       "level": "Beginner",
-      "author": "Beginner",
-      "des": "Design a clean and modern login page for a mobile or web application. Focus on usability, accessibility, visual hierarchy, and creating a seamless authentication experience.",
+      "author": "Easy",
+      "screens": {
+        "mobile": "1-2",
+        "pc": "1"
+      },
+      "des": "Design a clean login screen with email/password fields, forgot password link, and social login buttons. Focus on usability, accessibility, visual hierarchy, and a seamless authentication experience.",
       "step_by_step": [
-        "Research modern login page designs",
-        "Create a low-fidelity wireframe",
-        "Design the app logo and welcome section",
-        "Add email and password input fields",
-        "Include a show/hide password toggle",
-        "Add a 'Forgot Password?' link",
-        "Design a prominent Login button",
-        "Include social login options",
-        "Add a 'Create Account' link",
-        "Design loading, success, and error states",
-        "Ensure accessibility and responsive layout",
-        "Prototype button and input interactions"
+        "Sketch the layout with logo, input fields, and button placement.",
+        "Choose a color palette (2 primary + 1 accent).",
+        "Design input fields with focus and error states.",
+        "Create a primary Login button.",
+        "Add social login buttons.",
+        "Include 'Forgot Password?' and 'Sign Up' links.",
+        "Ensure accessibility and responsive spacing.",
+        "Prototype button interactions."
       ]
     },
     {
       "id": 412,
-      "title": "Modern Login Page Design",
-      "category": "UI Design",
+      "title": "Splash Screen",
+      "category": "UI design",
       "level": "Beginner",
-      "author": "Beginner",
-      "des": "Design a clean and modern login page for a mobile or web application. Focus on usability, accessibility, visual hierarchy, and creating a seamless authentication experience.",
+      "author": "Easy",
+      "screens": {
+        "mobile": "1",
+        "pc": "1"
+      },
+      "des": "Design an engaging splash screen displayed while the application loads. Focus on branding, visual appeal, and a smooth loading experience.",
       "step_by_step": [
-        "Research modern login page designs",
-        "Create a low-fidelity wireframe",
-        "Design the app logo and welcome section",
-        "Add email and password input fields",
-        "Include a show/hide password toggle",
-        "Add a 'Forgot Password?' link",
-        "Design a prominent Login button",
-        "Include social login options",
-        "Add a 'Create Account' link",
-        "Design loading, success, and error states",
-        "Ensure accessibility and responsive layout",
-        "Prototype button and input interactions"
-      ],
-      "image": "/Images/UiUx/login-page.png",
-      "images": [
-        "/Images/UiUx/login-page.png"
+        "Place the brand logo at the center.",
+        "Choose a background (solid, gradient, or illustration).",
+        "Add a loading indicator.",
+        "Design a simple fade or scale animation.",
+        "Maintain consistent branding."
       ]
     },
     {
-      "id": 405,
-      "title": "Smart Home App Dashboard",
+      "id": 413,
+      "title": "Profile Card",
+      "category": "UI design",
+      "level": "Beginner",
+      "author": "Easy",
+      "screens": {
+        "mobile": "1",
+        "pc": "1"
+      },
+      "des": "Design a user profile card displaying avatar, user details, bio, and social statistics with a modern layout.",
+      "step_by_step": [
+        "Choose the card layout.",
+        "Add profile image, name, and bio.",
+        "Display follower statistics.",
+        "Add Follow/Edit Profile button.",
+        "Apply shadows and rounded corners."
+      ]
+    },
+    {
+      "id": 414,
+      "title": "Weather Widget",
+      "category": "UI design",
+      "level": "Beginner",
+      "author": "Easy",
+      "screens": {
+        "mobile": "1",
+        "pc": "1"
+      },
+      "des": "Design a compact weather widget displaying current weather, location, and additional weather information.",
+      "step_by_step": [
+        "Select weather icons.",
+        "Display temperature prominently.",
+        "Add humidity and wind information.",
+        "Design a weather-themed background.",
+        "Ensure readability."
+      ]
+    },
+    {
+      "id": 415,
+      "title": "Simple Calculator",
+      "category": "UI design",
+      "level": "Beginner",
+      "author": "Easy",
+      "screens": {
+        "mobile": "1",
+        "pc": "1"
+      },
+      "des": "Design a basic calculator interface with a display area, number pad, and arithmetic operation buttons.",
+      "step_by_step": [
+        "Design the display area.",
+        "Create a 4x5 button grid.",
+        "Highlight operator buttons.",
+        "Add pressed and active states.",
+        "Maintain proper spacing."
+      ]
+    },
+    {
+      "id": 416,
+      "title": "Simple To-Do List",
+      "category": "UI design",
+      "level": "Beginner",
+      "author": "Easy",
+      "screens": {
+        "mobile": "1",
+        "pc": "1"
+      },
+      "des": "Design a task management screen allowing users to add, complete, and delete daily tasks.",
+      "step_by_step": [
+        "Design the task input field.",
+        "Create pending and completed task styles.",
+        "Add delete functionality.",
+        "Design an empty state.",
+        "Use simple icons and spacing."
+      ]
+    },
+    {
+      "id": 417,
+      "title": "Contact Card",
+      "category": "UI design",
+      "level": "Beginner",
+      "author": "Easy",
+      "screens": {
+        "mobile": "1",
+        "pc": "1"
+      },
+      "des": "Design a contact card displaying user information and quick communication options.",
+      "step_by_step": [
+        "Add profile image.",
+        "Display contact details.",
+        "Design quick action buttons.",
+        "Maintain visual hierarchy.",
+        "Ensure responsive spacing."
+      ]
+    },
+    {
+      "id": 418,
+      "title": "Alarm Clock UI",
+      "category": "UI design",
+      "level": "Beginner",
+      "author": "Easy",
+      "screens": {
+        "mobile": "1-2",
+        "pc": "1"
+      },
+      "des": "Design an alarm clock interface for viewing, creating, and managing alarms.",
+      "step_by_step": [
+        "Design the next alarm section.",
+        "Display alarm list.",
+        "Add toggle switches.",
+        "Design the Add Alarm button.",
+        "Create the time picker screen."
+      ]
+    },
+    {
+      "id": 419,
+      "title": "Music Player Mini Widget",
+      "category": "UI design",
+      "level": "Beginner",
+      "author": "Easy",
+      "screens": {
+        "mobile": "1",
+        "pc": "1"
+      },
+      "des": "Design a compact music player widget displaying song details and playback controls.",
+      "step_by_step": [
+        "Add album artwork.",
+        "Display song title and artist.",
+        "Create playback controls.",
+        "Design the progress bar.",
+        "Keep the layout compact."
+      ]
+    },
+    {
+      "id": 420,
+      "title": "Notification Card",
+      "category": "UI design",
+      "level": "Beginner",
+      "author": "Easy",
+      "screens": {
+        "mobile": "1",
+        "pc": "1"
+      },
+      "des": "Design a notification card displaying notification details, timestamps, and action options.",
+      "step_by_step": [
+        "Design notification layout.",
+        "Add notification icon or avatar.",
+        "Display message and timestamp.",
+        "Differentiate read and unread states.",
+        "Add swipe actions for dismiss and mark as read."
+      ]
+    },
+
+    {
+      "id": 421,
+      "title": "Sign-Up Flow with OTP Verification",
+      "category": "UI design",
+      "level": "Easy",
+      "author": "Easy",
+      "screens": {
+        "mobile": "3",
+        "pc": "2-3"
+      },
+      "des": "Design a multi-step user registration flow including sign-up, OTP verification, and success confirmation screens. Focus on creating a secure, intuitive, and user-friendly onboarding experience.",
+      "step_by_step": [
+        "Design the sign-up form with name, email, phone number, and password fields.",
+        "Apply proper validation and error states for each input field.",
+        "Create an OTP verification screen with auto-focus input boxes.",
+        "Add a resend OTP timer and verification feedback.",
+        "Design a registration success screen with confirmation message.",
+        "Prototype the complete registration flow."
+      ]
+    },
+    {
+      "id": 422,
+      "title": "Onboarding Screens",
+      "category": "UI design",
+      "level": "Easy",
+      "author": "Easy",
+      "screens": {
+        "mobile": "3-4",
+        "pc": "1 (usually skipped on web)"
+      },
+      "des": "Design a swipeable onboarding experience introducing the application's core features before users sign in.",
+      "step_by_step": [
+        "Identify 3–4 key features to showcase.",
+        "Design illustrations for each onboarding screen.",
+        "Create engaging headings and supporting text.",
+        "Add pagination indicators and Skip/Next buttons.",
+        "Design the final Get Started screen.",
+        "Prototype swipe interactions."
+      ]
+    },
+    {
+      "id": 423,
+      "title": "Simple E-Commerce Product Page",
+      "category": "UI design",
+      "level": "Easy",
+      "author": "Easy",
+      "screens": {
+        "mobile": "3",
+        "pc": "2-3"
+      },
+      "des": "Design a simple e-commerce interface with a product listing page, detailed product screen, and add-to-cart interaction.",
+      "step_by_step": [
+        "Design a product listing grid with product image, title, and price.",
+        "Create a detailed product page with image gallery.",
+        "Add size, quantity, and product description.",
+        "Design a sticky Add to Cart button.",
+        "Create a cart confirmation popup or toast.",
+        "Prototype navigation between screens."
+      ]
+    },
+    {
+      "id": 424,
+      "title": "Recipe App",
+      "category": "UI design",
+      "level": "Easy",
+      "author": "Easy",
+      "screens": {
+        "mobile": "3",
+        "pc": "2-3"
+      },
+      "des": "Design a recipe browsing application that allows users to explore recipes, view details, and save favorites.",
+      "step_by_step": [
+        "Design recipe categories and filter chips.",
+        "Create recipe cards with image, title, cooking time, and difficulty.",
+        "Design the recipe detail page.",
+        "Display ingredients and cooking instructions.",
+        "Add a favorite/save interaction.",
+        "Prototype recipe navigation."
+      ]
+    },
+    {
+      "id": 425,
+      "title": "Notes App",
+      "category": "UI design",
+      "level": "Easy",
+      "author": "Easy",
+      "screens": {
+        "mobile": "3",
+        "pc": "2"
+      },
+      "des": "Design a notes application where users can create, edit, organize, and manage personal notes efficiently.",
+      "step_by_step": [
+        "Design the notes list view.",
+        "Create the note editor screen.",
+        "Add title and content formatting.",
+        "Include search functionality.",
+        "Design folders or color categories.",
+        "Create an empty state illustration."
+      ]
+    },
+    {
+      "id": 426,
+      "title": "Weather App (Multi-City)",
+      "category": "UI design",
+      "level": "Easy",
+      "author": "Easy",
+      "screens": {
+        "mobile": "3",
+        "pc": "2-3"
+      },
+      "des": "Design a weather application supporting multiple cities with forecasts, search, and weather-themed visuals.",
+      "step_by_step": [
+        "Design the home weather dashboard.",
+        "Display hourly and weekly forecasts.",
+        "Create an Add City search screen.",
+        "Design the saved cities list.",
+        "Apply dynamic weather backgrounds.",
+        "Prototype city switching."
+      ]
+    },
+    {
+      "id": 427,
+      "title": "Quiz App",
+      "category": "UI design",
+      "level": "Easy",
+      "author": "Easy",
+      "screens": {
+        "mobile": "4",
+        "pc": "3-4"
+      },
+      "des": "Design a quiz application where users select categories, answer questions, and view their final score.",
+      "step_by_step": [
+        "Design the category selection screen.",
+        "Create the quiz question interface.",
+        "Add progress indicator and timer.",
+        "Highlight correct and incorrect answers.",
+        "Design the score summary screen.",
+        "Prototype the quiz flow."
+      ]
+    },
+    {
+      "id": 428,
+      "title": "Habit Tracker",
+      "category": "UI design",
+      "level": "Easy",
+      "author": "Easy",
+      "screens": {
+        "mobile": "3-4",
+        "pc": "3"
+      },
+      "des": "Design a habit tracking application that helps users monitor daily habits and maintain streaks.",
+      "step_by_step": [
+        "Design the habit dashboard.",
+        "Create an Add Habit screen.",
+        "Display progress using a calendar.",
+        "Show streak statistics.",
+        "Design empty and success states.",
+        "Prototype habit completion."
+      ]
+    },
+    {
+      "id": 429,
+      "title": "Music Player Full App",
+      "category": "UI design",
+      "level": "Easy",
+      "author": "Easy",
+      "screens": {
+        "mobile": "4",
+        "pc": "3-4"
+      },
+      "des": "Design a complete music player application with playlists, now-playing screen, and library management.",
+      "step_by_step": [
+        "Design the music library home screen.",
+        "Create playlist cards.",
+        "Design the now-playing interface.",
+        "Display playback controls and lyrics toggle.",
+        "Create the playlist details screen.",
+        "Design a persistent mini-player."
+      ]
+    },
+    {
+      "id": 430,
+      "title": "Chat List & Chat Screen",
+      "category": "UI design",
+      "level": "Easy",
+      "author": "Easy",
+      "screens": {
+        "mobile": "3",
+        "pc": "2 (list + chat often combined as split-view)"
+      },
+      "des": "Design a messaging application with a conversations list, chat interface, and contact selection screen.",
+      "step_by_step": [
+        "Design the conversations list.",
+        "Create the individual chat screen.",
+        "Add typing indicator and message status.",
+        "Design attachment and emoji actions.",
+        "Create the new chat/contact picker screen.",
+        "Prototype message interactions."
+      ]
+    },
+
+    {
+      "id": 431,
+      "title": "E-Commerce App (Browse → Cart → Checkout)",
+      "category": "UI design",
+      "level": "Medium",
+      "author": "Intermediate",
+      "screens": {
+        "mobile": "6",
+        "pc": "5-6"
+      },
+      "des": "Design a complete e-commerce shopping experience from browsing products to placing an order with a smooth and user-friendly checkout process.",
+      "step_by_step": [
+        "Design the home screen with banners, featured products, and categories.",
+        "Create category and search result screens with sorting and filters.",
+        "Design the product details page with gallery, description, and reviews.",
+        "Build the shopping cart with quantity controls and remove options.",
+        "Design the checkout flow with shipping address and payment methods.",
+        "Create an order confirmation screen with order summary and tracking."
+      ]
+    },
+    {
+      "id": 432,
+      "title": "Food Delivery App",
+      "category": "UI design",
+      "level": "Medium",
+      "author": "Intermediate",
+      "screens": {
+        "mobile": "6-7",
+        "pc": "5"
+      },
+      "des": "Design a food delivery application that allows users to discover restaurants, browse menus, place orders, and track deliveries in real time.",
+      "step_by_step": [
+        "Design the home screen with location, restaurant list, and promotional offers.",
+        "Create the restaurant details page with menu categories.",
+        "Design the cart with add-ons and quantity management.",
+        "Build the checkout screen with address and payment selection.",
+        "Create a live order tracking screen with map integration.",
+        "Design the order history page."
+      ]
+    },
+    {
+      "id": 433,
+      "title": "Fitness Tracking App",
+      "category": "UI design",
+      "level": "Medium",
+      "author": "Intermediate",
+      "screens": {
+        "mobile": "6",
+        "pc": "5"
+      },
+      "des": "Design a fitness tracking application that helps users monitor workouts, health statistics, and personal fitness goals.",
+      "step_by_step": [
+        "Design the dashboard with today's activity and workout summary.",
+        "Create the workout categories and exercise library.",
+        "Design workout detail screens with exercises and instructions.",
+        "Build an active workout tracker with timer and repetition counter.",
+        "Create progress analytics with charts and statistics.",
+        "Design profile and settings pages."
+      ]
+    },
+    {
+      "id": 434,
+      "title": "Social Media Feed App",
+      "category": "UI design",
+      "level": "Medium",
+      "author": "Intermediate",
+      "screens": {
+        "mobile": "6-7",
+        "pc": "5-6"
+      },
+      "des": "Design a social media application featuring feed browsing, content creation, user interaction, and profile management.",
+      "step_by_step": [
+        "Design the home feed with interactive posts.",
+        "Create the post creation workflow with image or video upload.",
+        "Design the comments page with threaded replies.",
+        "Build the user profile screen with post gallery.",
+        "Create a notifications page.",
+        "Design the search and explore section."
+      ]
+    },
+    {
+      "id": 435,
+      "title": "Booking & Reservation App",
+      "category": "UI design",
+      "level": "Medium",
+      "author": "Intermediate",
+      "screens": {
+        "mobile": "6",
+        "pc": "5-6"
+      },
+      "des": "Design a movie or hotel booking application with browsing, reservation, payment, and booking confirmation flows.",
+      "step_by_step": [
+        "Design listing and search screens with filters.",
+        "Create detail pages with images, reviews, and information.",
+        "Design seat selection or room selection screens.",
+        "Build date and time selection interfaces.",
+        "Design payment and checkout pages.",
+        "Create booking confirmation with digital ticket."
+      ]
+    },
+    {
+      "id": 436,
+      "title": "Expense Tracker",
+      "category": "UI design",
+      "level": "Medium",
+      "author": "Intermediate",
+      "screens": {
+        "mobile": "5",
+        "pc": "4-5"
+      },
+      "des": "Design a personal finance application that helps users manage income, expenses, budgets, and monthly reports.",
+      "step_by_step": [
+        "Design the financial dashboard with account balance.",
+        "Create the Add Transaction screen.",
+        "Design category-wise analytics using charts.",
+        "Build the monthly reports and transaction history.",
+        "Create the budget management page."
+      ]
+    },
+    {
+      "id": 437,
+      "title": "Job Portal App",
+      "category": "UI design",
+      "level": "Medium",
+      "author": "Intermediate",
+      "screens": {
+        "mobile": "6",
+        "pc": "6"
+      },
+      "des": "Design a job portal where users can search jobs, apply online, manage resumes, and track application status.",
+      "step_by_step": [
+        "Design the job search page with advanced filters.",
+        "Create the job details page.",
+        "Design the application form with resume upload.",
+        "Build the saved jobs section.",
+        "Create the application status tracker.",
+        "Design profile and resume management."
+      ]
+    },
+    {
+      "id": 438,
+      "title": "Learning & Course Platform",
+      "category": "UI design",
+      "level": "Medium",
+      "author": "Intermediate",
+      "screens": {
+        "mobile": "6",
+        "pc": "6-7"
+      },
+      "des": "Design an online learning platform with course discovery, video lessons, quizzes, and learner progress tracking.",
+      "step_by_step": [
+        "Design the course catalog with categories.",
+        "Create the course details page.",
+        "Design the video lesson player with notes.",
+        "Build the progress tracking dashboard.",
+        "Create quiz and assessment screens.",
+        "Design the course completion certificate page."
+      ]
+    },
+    {
+      "id": 439,
+      "title": "Travel Planner App",
+      "category": "UI design",
+      "level": "Medium",
+      "author": "Intermediate",
+      "screens": {
+        "mobile": "6-7",
+        "pc": "6"
+      },
+      "des": "Design a travel planning application that helps users discover destinations, build itineraries, and manage bookings.",
+      "step_by_step": [
+        "Design the destination discovery page.",
+        "Create destination details with attractions and maps.",
+        "Build a day-wise itinerary planner.",
+        "Design flight and hotel booking screens.",
+        "Create the trip summary page.",
+        "Design the My Trips dashboard."
+      ]
+    },
+    {
+      "id": 440,
+      "title": "Real Estate Listing App",
+      "category": "UI design",
+      "level": "Medium",
+      "author": "Intermediate",
+      "screens": {
+        "mobile": "6",
+        "pc": "5-6"
+      },
+      "des": "Design a real estate platform where users can browse properties, view details, contact agents, and schedule property visits.",
+      "step_by_step": [
+        "Design the property search page with map and list view.",
+        "Create advanced filter options.",
+        "Design the property details page with gallery and amenities.",
+        "Build the Schedule Visit or Contact Agent screen.",
+        "Create the saved properties page.",
+        "Design the real estate agent profile."
+      ]
+    },
+    {
+      "id": 441,
+      "title": "Banking App",
       "category": "UI design",
       "level": "Advanced",
       "author": "Advanced",
-      "des": "Design a dashboard for controlling smart home devices like lights, thermostats, and security cameras.",
+      "screens": {
+        "mobile": "10-12",
+        "pc": "8-10"
+      },
+      "des": "Design a secure banking application that allows users to manage accounts, transfer money, pay bills, view transaction history, and control security settings.",
       "step_by_step": [
-        "Define the core widgets needed on the dashboard",
-        "Create custom icons for each device type",
-        "Design an intuitive drag-and-drop customization flow",
-        "Add micro-interactions for toggling devices on and off"
-      ],
-      "image": "/Images/UiUx/mobile-screen.png",
-      "images": [
-        "/Images/UiUx/mobile-screen.png"
+        "Design the login screen with biometric authentication and PIN login.",
+        "Create the account dashboard showing balance, cards, and quick actions.",
+        "Design the money transfer flow including recipient selection, amount entry, confirmation, and OTP verification.",
+        "Build the bill payment and mobile recharge screens.",
+        "Design the transaction history page with search and filters.",
+        "Create the card management screen with block, freeze, and limit controls.",
+        "Design the bank statements and download screen.",
+        "Build the profile and security settings page."
+      ]
+    },
+    {
+      "id": 442,
+      "title": "Ride-Hailing App",
+      "category": "UI design",
+      "level": "Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "12-14",
+        "pc": "6-8"
+      },
+      "des": "Design a ride-hailing platform where users can book rides, track drivers in real time, complete payments, and rate trips. Include a driver application for ride management.",
+      "step_by_step": [
+        "Design the home map with pickup and destination search.",
+        "Create ride selection with fare estimation.",
+        "Design booking confirmation.",
+        "Build driver matching and live tracking.",
+        "Create trip progress with ETA updates.",
+        "Design payment and ride rating screens.",
+        "Build ride history.",
+        "Create driver-side screens for accepting rides, navigation, and earnings."
+      ]
+    },
+    {
+      "id": 443,
+      "title": "Healthcare & Telemedicine App",
+      "category": "UI design",
+      "level": "Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "10-12",
+        "pc": "8-10"
+      },
+      "des": "Design a healthcare platform that enables patients to find doctors, schedule appointments, attend online consultations, and manage medical records.",
+      "step_by_step": [
+        "Design doctor search with specialties and filters.",
+        "Create doctor profile and appointment booking.",
+        "Design appointment confirmation.",
+        "Build the video consultation interface.",
+        "Create prescription and medical report screens.",
+        "Design medical history and health records.",
+        "Build medicine reminder functionality.",
+        "Design insurance and payment management."
+      ]
+    },
+    {
+      "id": 444,
+      "title": "Multi-Vendor Marketplace",
+      "category": "UI design",
+      "level": "Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "10-12",
+        "pc": "10-12"
+      },
+      "des": "Design a marketplace supporting multiple vendors, product catalogs, shopping carts, seller dashboards, and order tracking.",
+      "step_by_step": [
+        "Design the marketplace home with featured vendors.",
+        "Create vendor storefront pages.",
+        "Design product listings and product details.",
+        "Build a multi-vendor shopping cart.",
+        "Design checkout with vendor-specific shipping.",
+        "Create order tracking for multiple sellers.",
+        "Build a seller dashboard with product management and analytics.",
+        "Design customer reviews and ratings."
+      ]
+    },
+    {
+      "id": 445,
+      "title": "Project Management Tool",
+      "category": "UI design",
+      "level": "Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "6-8",
+        "pc": "10-12"
+      },
+      "des": "Design a project management platform with Kanban boards, task collaboration, reporting dashboards, and team management features.",
+      "step_by_step": [
+        "Design the workspace dashboard.",
+        "Create Kanban boards with drag-and-drop tasks.",
+        "Design task detail windows with comments and attachments.",
+        "Build calendar and Gantt timeline views.",
+        "Design team member management and permissions.",
+        "Create activity feed and notifications.",
+        "Build reports and analytics dashboards.",
+        "Design a simplified mobile companion application."
+      ]
+    },
+    {
+      "id": 446,
+      "title": "Video Streaming Platform",
+      "category": "UI design",
+      "level": "Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "10",
+        "pc": "8-10"
+      },
+      "des": "Design a video streaming platform where users can browse content, watch videos, manage watchlists, and control subscriptions.",
+      "step_by_step": [
+        "Design the home screen with featured content.",
+        "Create search and genre browsing.",
+        "Design title details with cast, episodes, and synopsis.",
+        "Build a full-screen media player.",
+        "Create watchlist management.",
+        "Design profile selection.",
+        "Build downloads and offline viewing.",
+        "Create account and subscription settings."
+      ]
+    },
+    {
+      "id": 447,
+      "title": "Dating App",
+      "category": "UI design",
+      "level": "Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "10-12",
+        "pc": "4-6"
+      },
+      "des": "Design a dating application that allows users to create profiles, discover matches, chat, and manage personal preferences safely.",
+      "step_by_step": [
+        "Design onboarding and profile creation.",
+        "Create swipe-based profile discovery.",
+        "Design the match success celebration screen.",
+        "Build the matches list.",
+        "Create chat conversations.",
+        "Design filters and preference settings.",
+        "Build profile editing.",
+        "Create report, block, and safety screens."
+      ]
+    },
+    {
+      "id": 448,
+      "title": "Crypto Trading App",
+      "category": "UI design",
+      "level": "Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "10-12",
+        "pc": "10-12"
+      },
+      "des": "Design a cryptocurrency trading platform with market analysis, portfolio tracking, secure trading, and wallet management.",
+      "step_by_step": [
+        "Design the market overview dashboard.",
+        "Create coin detail pages with interactive charts.",
+        "Design buy and sell order screens.",
+        "Build order confirmation and history.",
+        "Create portfolio and holdings dashboards.",
+        "Design wallet deposit and withdrawal.",
+        "Build KYC verification.",
+        "Create price alert management."
+      ]
+    },
+    {
+      "id": 449,
+      "title": "Event Management Platform",
+      "category": "UI design",
+      "level": "Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "8-10",
+        "pc": "10-12"
+      },
+      "des": "Design an event platform where users can discover events, purchase tickets, while organizers manage events, attendees, and analytics.",
+      "step_by_step": [
+        "Design the event discovery screen.",
+        "Create detailed event information pages.",
+        "Design ticket selection and checkout.",
+        "Build e-ticket with QR code.",
+        "Create organizer dashboard for event management.",
+        "Design attendee check-in system.",
+        "Build analytics and sales reports.",
+        "Create notifications and reminders."
+      ]
+    },
+    {
+      "id": 450,
+      "title": "HR & Employee Management Dashboard",
+      "category": "UI design",
+      "level": "Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "5-6",
+        "pc": "10-12"
+      },
+      "des": "Design a comprehensive HR management system for handling employee records, attendance, payroll, recruitment, and organizational analytics.",
+      "step_by_step": [
+        "Design the admin login and dashboard.",
+        "Create the employee directory.",
+        "Design employee profile management.",
+        "Build attendance and leave management.",
+        "Create payroll processing screens.",
+        "Design performance review management.",
+        "Build recruitment and onboarding workflows.",
+        "Create reports and analytics dashboards.",
+        "Design a mobile companion for attendance and leave requests."
+      ]
+    },
+    {
+      "id": 451,
+      "title": "Full Banking & Investment Super App",
+      "category": "UI design",
+      "level": "Very Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "18-22",
+        "pc": "12-15"
+      },
+      "des": "Design a complete digital banking ecosystem that combines banking, investments, insurance, loans, bill payments, rewards, and customer support into a single application.",
+      "step_by_step": [
+        "Design authentication using PIN, biometrics, OTP, and device verification.",
+        "Create a unified dashboard displaying accounts, cards, and investments.",
+        "Design money transfer flows including UPI, IMPS, NEFT, and international transfers.",
+        "Build investment modules for stocks, SIPs, mutual funds, and portfolio tracking.",
+        "Design loan applications, EMI calculator, and repayment tracking.",
+        "Create insurance purchase and claim management screens.",
+        "Design bill payment and recharge hub.",
+        "Build rewards, cashback, and offers section.",
+        "Create AI chatbot and customer support module.",
+        "Design admin dashboard for customer support and operations."
+      ]
+    },
+    {
+      "id": 452,
+      "title": "Hospital Management System",
+      "category": "UI design",
+      "level": "Very Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "15-18",
+        "pc": "15-18"
+      },
+      "des": "Design a complete hospital management platform for patients, doctors, and administrators including appointments, prescriptions, billing, pharmacy, and analytics.",
+      "step_by_step": [
+        "Design patient registration and appointment booking.",
+        "Create doctor dashboard with schedules and e-prescriptions.",
+        "Design admin dashboard for hospital operations.",
+        "Build billing and insurance management.",
+        "Create laboratory report management.",
+        "Design pharmacy inventory system.",
+        "Build emergency and ambulance request flow.",
+        "Design analytics dashboard for hospital management."
+      ]
+    },
+    {
+      "id": 453,
+      "title": "SaaS Analytics Dashboard",
+      "category": "UI design",
+      "level": "Very Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "6-8",
+        "pc": "15-18"
+      },
+      "des": "Design a B2B SaaS analytics platform with enterprise dashboards, reporting, user management, billing, integrations, and advanced analytics.",
+      "step_by_step": [
+        "Design authentication and workspace selection.",
+        "Create KPI dashboard with charts and filters.",
+        "Build drill-down analytics reports.",
+        "Design custom dashboard builder.",
+        "Create user and permission management.",
+        "Build subscription and billing management.",
+        "Design API and integration settings.",
+        "Create alerts and notification configuration.",
+        "Design mobile dashboard companion."
+      ]
+    },
+    {
+      "id": 454,
+      "title": "Multi-Role Delivery Platform",
+      "category": "UI design",
+      "level": "Very Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "16-20",
+        "pc": "12-15"
+      },
+      "des": "Design a logistics ecosystem with customer, delivery partner, vendor, and admin applications supporting order management and live delivery tracking.",
+      "step_by_step": [
+        "Design customer ordering experience.",
+        "Create delivery partner application.",
+        "Build vendor order management dashboard.",
+        "Design admin fleet management.",
+        "Create support and dispute management.",
+        "Build driver payouts and vendor settlements.",
+        "Design logistics analytics dashboard."
+      ]
+    },
+    {
+      "id": 455,
+      "title": "Social Media Platform",
+      "category": "UI design",
+      "level": "Very Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "18-20",
+        "pc": "10-12"
+      },
+      "des": "Design a complete social media platform featuring feeds, stories, reels, messaging, creator tools, and moderation dashboards.",
+      "step_by_step": [
+        "Design feed and stories interface.",
+        "Create reels and short-video experience.",
+        "Build post and reel creation workflow.",
+        "Design messaging system.",
+        "Create profile and content management.",
+        "Build explore and search pages.",
+        "Design creator analytics dashboard.",
+        "Create privacy and settings pages.",
+        "Build admin moderation dashboard."
+      ]
+    },
+    {
+      "id": 456,
+      "title": "E-Learning LMS",
+      "category": "UI design",
+      "level": "Very Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "12-14",
+        "pc": "15-18"
+      },
+      "des": "Design a Learning Management System supporting students, instructors, and administrators with courses, assignments, quizzes, live classes, and analytics.",
+      "step_by_step": [
+        "Design student learning application.",
+        "Create instructor course management portal.",
+        "Build administrator dashboard.",
+        "Design discussion forums.",
+        "Create live classroom interface.",
+        "Build assignment submission and grading.",
+        "Design certificates and achievements.",
+        "Create leaderboard and gamification."
+      ]
+    },
+    {
+      "id": 457,
+      "title": "Smart Home IoT Control App",
+      "category": "UI design",
+      "level": "Very Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "14-16",
+        "pc": "8-10"
+      },
+      "des": "Design an IoT smart home application that controls connected devices, automation routines, security, and energy management.",
+      "step_by_step": [
+        "Design home and room dashboard.",
+        "Create smart device controls.",
+        "Build device pairing workflow.",
+        "Design automation and routines.",
+        "Create security camera monitoring.",
+        "Build energy analytics.",
+        "Design family access management.",
+        "Create alerts and notification center."
+      ]
+    },
+    {
+      "id": 458,
+      "title": "Airline Booking & Management System",
+      "category": "UI design",
+      "level": "Very Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "12-14",
+        "pc": "12-15"
+      },
+      "des": "Design a complete airline booking platform including flight search, booking, online check-in, boarding passes, and airline management tools.",
+      "step_by_step": [
+        "Design flight search interface.",
+        "Create flight results and fare comparison.",
+        "Design seat selection and travel add-ons.",
+        "Build passenger details and payment flow.",
+        "Create digital boarding pass.",
+        "Design online check-in.",
+        "Build flight tracking.",
+        "Create airline management dashboard."
+      ]
+    },
+    {
+      "id": 459,
+      "title": "CRM System",
+      "category": "UI design",
+      "level": "Very Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "8-10",
+        "pc": "15-18"
+      },
+      "des": "Design an enterprise CRM platform for managing leads, customers, sales pipelines, communication, and business analytics.",
+      "step_by_step": [
+        "Design sales dashboard.",
+        "Create lead and contact management.",
+        "Build Kanban sales pipeline.",
+        "Design communication timeline.",
+        "Create email and call integration.",
+        "Build reminders and follow-ups.",
+        "Design forecasting reports.",
+        "Create territory and team management.",
+        "Build mobile CRM companion."
+      ]
+    },
+    {
+      "id": 460,
+      "title": "Government & Civic Services Portal",
+      "category": "UI design",
+      "level": "Very Advanced",
+      "author": "Advanced",
+      "screens": {
+        "mobile": "14-16",
+        "pc": "15-18"
+      },
+      "des": "Design a government digital services platform that enables citizens to apply for services, track applications, submit grievances, and access digital certificates with a comprehensive administrative back office.",
+      "step_by_step": [
+        "Design citizen registration and secure login.",
+        "Create services catalog.",
+        "Build multi-step service application forms.",
+        "Design application tracking.",
+        "Create digital certificate downloads.",
+        "Build grievance management.",
+        "Design online payment and fee submission.",
+        "Create notifications and appointment scheduling.",
+        "Build officer approval dashboard.",
+        "Design analytics and reporting dashboard."
       ]
     }
+
   ]
 }

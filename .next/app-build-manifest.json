@@ -26,11 +26,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/ui-ux/page.js"
     ],
-    "/graphic-design/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/graphic-design/page.js"
-    ],
     "/challenges/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -41,10 +36,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/interview/page.js"
     ],
-    "/placement/page": [
+    "/graphic-design/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/placement/page.js"
+      "static/chunks/app/graphic-design/page.js"
     ]
   }
 }

@@ -2,37 +2,154 @@
   "posters": [
     {
       "id": 300,
-      "title": "Review Ui",
+      "title": "Mobile Authentication & Login UI",
       "category": "mobile-screen",
       "image": "",
       "images": [
         "/Images/UiUx/Mobile/task1/task1 (1).png",
-        "/Images/UiUx/Mobile/task1/task1 (2).png",
         "/Images/UiUx/Mobile/task1/task1 (3).png",
-        "/Images/UiUx/Mobile/task1/task1 (4).png"
+        "/Images/UiUx/Mobile/task1/task1 png (2).png"
       ],
-      "description": "Checklist app for users to track their daily tasks.",
+      "description": "Design a modern and user-friendly authentication experience for a mobile application, including welcome, sign-in, and account access screens. Focus on simplicity, accessibility, and intuitive user interactions.",
       "objectives": [
-        "Task 1: Design interactive product selection filters",
-        "Task 2: Optimize visual hierarchy on mobile viewport details",
-        "Task 3: Map user payment entry field interactions"
+        "Task 1: Design an engaging welcome screen with clear sign-in and registration options.",
+        "Task 2: Create a secure and intuitive login interface with email, password, and social sign-in methods.",
+        "Task 3: Maintain a consistent visual style and responsive mobile user experience throughout the authentication flow."
+      ],
+      "author": "Easy"
+    },
+    {
+      "id": 301,
+      "title": "Travel Booking Mobile App UI",
+      "category": "mobile-screen",
+      "image": "",
+      "images": [
+        "/Images/UiUx/Mobile/task2/task2 (1).jpg",
+        "/Images/UiUx/Mobile/task2/task2 (2).jpg",
+        "/Images/UiUx/Mobile/task2/task2 (3).jpg",
+        "/Images/UiUx/Mobile/task2/task2 (4).jpg",
+        "/Images/UiUx/Mobile/task2/task2 (5).jpg"
+      ],
+      "description": "Design a modern travel booking mobile application featuring a branded splash screen, user authentication, profile management, and notification settings. Focus on creating a clean, intuitive, and engaging user experience for travelers.",
+      "objectives": [
+        "Task 1: Design a visually appealing splash screen and user authentication flow.",
+        "Task 2: Create a user profile interface with account management and navigation options.",
+        "Task 3: Design a customizable notification settings screen for travel updates and promotions."
+      ],
+      "author": "Easy"
+    },
+    {
+      "id": 302,
+      "title": "Customer Reviews & Appointment Booking UI",
+      "category": "mobile-screen",
+      "image": "",
+      "images": [
+        "/Images/UiUx/Mobile/task3/task3 (1).png",
+        "/Images/UiUx/Mobile/task3/task3 (2).png",
+        "/Images/UiUx/Mobile/task3/task3 (3).png",
+        "/Images/UiUx/Mobile/task3/task3 (4).png"
+      ],
+      "description": "Design a seamless appointment booking and customer review experience for a mobile application. The interface enables users to schedule appointments, browse customer feedback, filter reviews by ratings, and sort reviews to make informed decisions.",
+      "objectives": [
+        "Task 1: Design an intuitive appointment scheduling interface with date and time selection.",
+        "Task 2: Create a customer reviews page with ratings, reviewer details, and feedback.",
+        "Task 3: Implement review filtering and sorting options to improve user experience."
       ],
       "author": "Easy"
     },
     {
       "id": 303,
-      "title": "Food Delivery Tracker Mobile App",
+      "title": "Cryptocurrency Portfolio & Trading App UI",
       "category": "mobile-screen",
-      "image": "/Images/UiUx/mobile-screen.png",
+      "image": "",
       "images": [
-        "/Images/UiUx/mobile-screen.png",
-        "/Images/UiUx/ux.png"
+        "/Images/UiUx/Mobile/task4/task4 (1).jpg",
+        "/Images/UiUx/Mobile/task4/task4 (2).jpg",
+        "/Images/UiUx/Mobile/task4/task4 (3).jpg",
+        "/Images/UiUx/Mobile/task4/task4 (4).jpg",
+        "/Images/UiUx/Mobile/task4/task4 (5).jpg",
+        "/Images/UiUx/Mobile/task4/task4 (6).jpg",
+        "/Images/UiUx/Mobile/task4/task4 (7).jpg",
+        "/Images/UiUx/Mobile/task4/task4 (8).jpg",
+        "/Images/UiUx/Mobile/task4/task4 (9).jpg",
+        "/Images/UiUx/Mobile/task4/task4 (10).jpg",
+        "/Images/UiUx/Mobile/task4/task4 (11).jpg",
+        "/Images/UiUx/Mobile/task4/task4 (12).jpg"
       ],
-      "description": "Design a real-time order tracking map view and driver notification drawer for a local food delivery app. Focus on custom map markers and slide-up modal gestures.",
+      "description": "Design a modern cryptocurrency trading and portfolio management application that enables users to monitor investments, explore market trends, manage digital assets, review transaction history, and securely trade cryptocurrencies through an intuitive mobile interface.",
       "objectives": [
-        "Task 1: Design tracking map layout and markers",
-        "Task 2: Build driver bio card and delivery ETA badge",
-        "Task 3: Map real-time chat bubble overlay interactions"
+        "Task 1: Design secure authentication, onboarding, and account setup screens for a cryptocurrency trading application.",
+        "Task 2: Create portfolio dashboards, live market tracking, asset search, and investment management interfaces.",
+        "Task 3: Build trading workflows including buy/sell operations, transaction history, security settings, and user profile management."
+      ],
+      "author": "Intermediate"
+    },
+    {
+      "id": 304,
+      "title": "Online Grocery Shopping Mobile App UI",
+      "category": "mobile-screen",
+      "image": "",
+      "images": [
+        "/Images/UiUx/Mobile/task5/task5 (1).png",
+        "/Images/UiUx/Mobile/task5/task5 (2).png",
+        "/Images/UiUx/Mobile/task5/task5 (3).png",
+        "/Images/UiUx/Mobile/task5/task5 (4).png",
+        "/Images/UiUx/Mobile/task5/task5 (5).png",
+        "/Images/UiUx/Mobile/task5/task5 (6).png",
+        "/Images/UiUx/Mobile/task5/task5 (7).png",
+        "/Images/UiUx/Mobile/task5/task5 (8).png",
+        "/Images/UiUx/Mobile/task5/task5 (9).png",
+        "/Images/UiUx/Mobile/task5/task5 mainfull (10).png",
+        "/Images/UiUx/Mobile/task5/task5 (11).png",
+        "/Images/UiUx/Mobile/task5/task5 (12).png",
+        "/Images/UiUx/Mobile/task5/task5 (14).png",
+        "/Images/UiUx/Mobile/task5/task5 (15).png",
+        "/Images/UiUx/Mobile/task5/task5 (16).png",
+        "/Images/UiUx/Mobile/task5/task5 (17).png",
+        "/Images/UiUx/Mobile/task5/task5 (18).png",
+        "/Images/UiUx/Mobile/task5/task5 (19).jpg",
+        "/Images/UiUx/Mobile/task5/task5 (20).jpg",
+        "/Images/UiUx/Mobile/task5/task5 (21).png",
+        "/Images/UiUx/Mobile/task5/task5 onbording (13).jpg"
+      ],
+      "description": "Design a modern online grocery shopping application that enables users to browse products, manage shopping carts, complete secure checkout, track orders, and enjoy a smooth mobile shopping experience with an intuitive and visually appealing interface.",
+      "objectives": [
+        "Task 1: Design user authentication, onboarding, splash screen, and delivery location setup.",
+        "Task 2: Create grocery browsing, product details, favorites, shopping cart, and checkout screens.",
+        "Task 3: Build order confirmation, OTP verification, user profile, and order management interfaces for a seamless shopping experience."
+      ],
+      "author": "Intermediate"
+    },
+    {
+      "id": 305,
+      "title": "Fashion E-Commerce Mobile App UI",
+      "category": "mobile-screen",
+      "image": "",
+      "images": [
+        "/Images/UiUx/Mobile/task6/task6 (1).png",
+        "/Images/UiUx/Mobile/task6/task6 (2).png",
+        "/Images/UiUx/Mobile/task6/task6 (3).png",
+        "/Images/UiUx/Mobile/task6/task6 (4).png",
+        "/Images/UiUx/Mobile/task6/task6 (5).png",
+        "/Images/UiUx/Mobile/task6/task6 (6).png",
+        "/Images/UiUx/Mobile/task6/task6 (7).png",
+        "/Images/UiUx/Mobile/task6/task6 (8).png",
+        "/Images/UiUx/Mobile/task6/task6 (9).png",
+        "/Images/UiUx/Mobile/task6/task6 (10).png",
+        "/Images/UiUx/Mobile/task6/task6 (11).png",
+        "/Images/UiUx/Mobile/task6/task6 (12).png",
+        "/Images/UiUx/Mobile/task6/task6 (13).png",
+        "/Images/UiUx/Mobile/task6/task6 (14).png",
+        "/Images/UiUx/Mobile/task6/task6 (15).png",
+        "/Images/UiUx/Mobile/task6/task6 (16).png",
+        "/Images/UiUx/Mobile/task6/task6 (19).png",
+        "/Images/UiUx/Mobile/task6/task6 Splash.png"
+      ],
+      "description": "Design a modern fashion e-commerce mobile application that enables users to browse clothing collections, manage wishlists, add products to the cart, complete secure payments, and track orders through a clean, intuitive, and engaging shopping experience.",
+      "objectives": [
+        "Task 1: Design authentication screens including onboarding, login, sign up, password recovery, and OTP verification.",
+        "Task 2: Create shopping experiences including product listings, product details, wishlist, reviews, shopping cart, and order summary.",
+        "Task 3: Design user profile, address management, payment methods, navigation menu, and order confirmation screens while maintaining a consistent user interface."
       ],
       "author": "Intermediate"
     }
