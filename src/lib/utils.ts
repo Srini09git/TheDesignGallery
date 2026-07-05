@@ -22,8 +22,25 @@ export function calculateDuration(startStr: string, endStr: string): string | nu
     if (hrs > 0) return `${hrs}h`;
     
     const mins = Math.floor(diffMs / (1000 * 60));
-    return `${mins}m`;
+    const secs = Math.floor(diffMs / 1000) % 60;
+    
+    if (mins > 0) return `${mins}m ${secs}s`;
+    return `${secs}s`;
   } catch (e) {
     return null;
+  }
+}
+
+export function formatDate(isoStr: string | null): string | null {
+  if (!isoStr) return null;
+  try {
+    const date = new Date(isoStr);
+    if (isNaN(date.getTime())) return isoStr; // Fallback for old formatted data
+    return date.toLocaleString(undefined, {
+      month: 'short', day: 'numeric', year: 'numeric',
+      hour: 'numeric', minute: '2-digit',
+    });
+  } catch {
+    return isoStr;
   }
 }

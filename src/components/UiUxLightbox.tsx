@@ -15,6 +15,7 @@ interface UiUxLightboxProps {
   isCompleted: boolean;
   onMarkCompleted: (id: number) => void;
   onMarkDownloaded: (id: number) => void;
+  isLocked?: boolean;
 }
 
 export default function UiUxLightbox({
@@ -23,6 +24,7 @@ export default function UiUxLightbox({
   isCompleted,
   onMarkCompleted,
   onMarkDownloaded,
+  isLocked = false,
 }: UiUxLightboxProps) {
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [isZipping, setIsZipping] = useState(false);
@@ -130,13 +132,15 @@ export default function UiUxLightbox({
             />
 
             {/* Single Image Download Button */}
-            <button
-              onClick={() => handleDownloadSingleImage(images[activeImgIndex])}
-              className="absolute top-3 right-3 z-10 p-2.5 rounded-full bg-background/90 hover:bg-background text-foreground hover:scale-105 active:scale-95 transition-all duration-200 shadow-soft border border-border"
-              title="Download this screen"
-            >
-              <Download className="w-4 h-4" />
-            </button>
+            {!isLocked && (
+              <button
+                onClick={() => handleDownloadSingleImage(images[activeImgIndex])}
+                className="absolute top-3 right-3 z-10 p-2.5 rounded-full bg-background/90 hover:bg-background text-foreground hover:scale-105 active:scale-95 transition-all duration-200 shadow-soft border border-border"
+                title="Download this screen"
+              >
+                <Download className="w-4 h-4" />
+              </button>
+            )}
 
             {/* Navigation Arrows for multi-images */}
             {images.length > 1 && (
@@ -266,12 +270,14 @@ export default function UiUxLightbox({
             {hasImage ? (
               <Button
                 onClick={handleDownloadZip}
-                disabled={isZipping}
+                disabled={isZipping || isLocked}
                 className={cn(
                   "flex-1 rounded-2xl py-6 font-semibold shadow-soft flex items-center justify-center gap-2",
                   isCompleted
                     ? "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border"
-                    : "gradient-primary hover:opacity-95 text-white"
+                    : isLocked
+                      ? "bg-muted text-muted-foreground border border-border"
+                      : "gradient-primary hover:opacity-95 text-white"
                 )}
               >
                 {isZipping ? (
@@ -292,20 +298,23 @@ export default function UiUxLightbox({
                   onMarkDownloaded(poster.id);
                   toast.success('Task started!');
                 }}
+                disabled={isLocked}
                 className={cn(
                   "flex-1 rounded-2xl py-6 font-semibold shadow-soft flex items-center justify-center gap-2",
                   isCompleted
                     ? "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border"
-                    : "gradient-primary hover:opacity-95 text-white"
+                    : isLocked
+                      ? "bg-muted text-muted-foreground border border-border"
+                      : "gradient-primary hover:opacity-95 text-white"
                 )}
               >
-                <span>Start Task</span>
+                <span>{isLocked ? 'Locked' : 'Start Task'}</span>
               </Button>
             )}
 
             <Button
               onClick={handleManualToggleComplete}
-              disabled={isCompleted}
+              disabled={isCompleted || isLocked}
               variant="outline"
               className={cn(
                 "rounded-2xl py-6 font-semibold border-border hover:bg-secondary/50 transition-all",

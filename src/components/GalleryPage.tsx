@@ -44,17 +44,11 @@ export default function GalleryPage({ track }: GalleryPageProps) {
     ? [...posters].sort((a, b) => a.id - b.id)
     : posters;
 
-  const firstUncompletedIndex = sortedUiuxPosters.findIndex(poster => !isCompleted(poster.id));
-
-  const visiblePosters = track === 'ui-ux'
-    ? sortedUiuxPosters.filter((poster, index) => {
-        if (index === 0) return true;
-        const maxVisibleIndex = firstUncompletedIndex === -1
-          ? sortedUiuxPosters.length - 1
-          : firstUncompletedIndex + 1;
-        return index <= maxVisibleIndex;
-      })
-    : posters;
+  const visiblePosters = track === 'ui-ux' ? sortedUiuxPosters : posters;
+  
+  const uiuxCompletedCount = track === 'ui-ux' 
+    ? sortedUiuxPosters.filter(p => isCompleted(p.id)).length 
+    : 0;
 
   const isUiuxLike = track === 'ui-ux' || track === 'challenges';
   const isInterview = track === 'interview';
@@ -184,19 +178,15 @@ export default function GalleryPage({ track }: GalleryPageProps) {
           ) : (
             <div className="flex flex-col gap-2.5 sm:gap-3 w-full">
               {finalVisiblePosters.map((poster, index) => {
-                const isLocked = track === 'ui-ux' &&
-                  index > 0 &&
-                  !isCompleted(sortedUiuxPosters[index - 1].id);
+                const isLocked = track === 'ui-ux' && 
+                  poster.category === 'desktop-ui' && 
+                  uiuxCompletedCount < 5;
 
                 const getLockMessage = () => {
-                  if (index === 1) {
-                    return "First Mobile Screen mudi aprm nee desktop screen ku varalam Poi velaya paru summa summa click panitu irukadha ";
+                  if (poster.category === 'desktop-ui') {
+                    return `To unlock Desktop UI tasks, you must complete at least 5 tasks first. (Currently ${uiuxCompletedCount} completed)`;
                   }
-                  if (index === 2) {
-                    return "First Desktop Screen mudi aprm nee UX Flow ku varalam Poi velaya paru summa summa click panitu irukadha ";
-                  }
-                  const prevTitle = sortedUiuxPosters[index - 1].title;
-                  return `First ${prevTitle} mudi aprm nee next card ku varalam. Poi velaya paru summa summa click panitu irukadha.`;
+                  return "This task is locked.";
                 };
 
                 return (
@@ -246,6 +236,7 @@ export default function GalleryPage({ track }: GalleryPageProps) {
             isCompleted={isCompleted(selectedPoster.id)}
             onMarkCompleted={markCompleted}
             onMarkDownloaded={markDownloaded}
+            isLocked={track === 'ui-ux' && selectedPoster.category === 'desktop-ui' && uiuxCompletedCount < 5}
           />
         ) : (
           <Lightbox

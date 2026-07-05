@@ -21,6 +21,7 @@ interface DashboardProps {
   username: string;
   roles?: string[];
   completedIds: number[];
+  averageTime?: string | null;
 }
 
 interface TrackStats {
@@ -43,7 +44,7 @@ interface Goal {
   done: boolean;
 }
 
-export default function Dashboard({ username, roles = [], completedIds }: DashboardProps) {
+export default function Dashboard({ username, roles = [], completedIds, averageTime }: DashboardProps) {
   const [stats, setStats] = useState<{
     uiux: TrackStats;
     graphic: TrackStats;
@@ -323,6 +324,12 @@ export default function Dashboard({ username, roles = [], completedIds }: Dashbo
             <div className="text-xs text-white/75 font-semibold">Overall Progress</div>
             <div className="text-lg font-bold">{totalCompleted} / {totalItems} Done</div>
           </div>
+          {averageTime && (
+            <div>
+              <div className="text-xs text-white/75 font-semibold">Avg. Completion Time</div>
+              <div className="text-lg font-bold">{averageTime}</div>
+            </div>
+          )}
         </div>
       </div>
 

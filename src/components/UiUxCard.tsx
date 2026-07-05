@@ -1,7 +1,7 @@
 "use client";
 
 import { Poster } from '@/types/poster';
-import { cn, calculateDuration } from '@/lib/utils';
+import { cn, calculateDuration, formatDate } from '@/lib/utils';
 import { Eye, CheckCircle2, Lock, Clock, Play } from 'lucide-react';
 
 interface UiUxCardProps {
@@ -45,6 +45,8 @@ export default function UiUxCard({
 }: UiUxCardProps) {
   const taskNum = index + 1;
   const duration = completedAt && downloadedAt ? calculateDuration(downloadedAt, completedAt) : null;
+  const displayCompletedAt = formatDate(completedAt);
+  const displayDownloadedAt = formatDate(downloadedAt);
   const hasImage = poster.image !== false && (typeof poster.image === 'string' || (poster.images && poster.images.length > 0));
 
   return (
@@ -90,15 +92,15 @@ export default function UiUxCard({
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-secondary text-secondary-foreground">
                   {categoryLabels[poster.category] || poster.category}
                 </span>
-                {downloadedAt && (
+                {displayDownloadedAt && (
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 sm:hidden flex items-center gap-1">
-                    {hasImage ? '↓' : <Play className="w-2.5 h-2.5" />} {downloadedAt}
+                    {hasImage ? '↓' : <Play className="w-2.5 h-2.5" />} {displayDownloadedAt}
                   </span>
                 )}
                 {isCompleted && (
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1 sm:hidden">
                     <CheckCircle2 className="w-2.5 h-2.5" />
-                    {completedAt ? `Done: ${completedAt}` : 'Done'}
+                    {displayCompletedAt ? `Done: ${displayCompletedAt}` : 'Done'}
                   </span>
                 )}
                 {duration && (
@@ -146,17 +148,17 @@ export default function UiUxCard({
                 <span>Open</span>
               </button>
 
-              {downloadedAt && (
+              {displayDownloadedAt && (
                 <span className="hidden sm:flex px-3 py-1.5 rounded-xl text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 items-center gap-1.5 border border-blue-500/20">
                   {hasImage ? (
                     <>
                       <span className="font-bold">↓</span>
-                      <span>{downloadedAt}</span>
+                      <span>{displayDownloadedAt}</span>
                     </>
                   ) : (
                     <>
                       <Play className="w-3 h-3" />
-                      <span>{downloadedAt}</span>
+                      <span>{displayDownloadedAt}</span>
                     </>
                   )}
                 </span>
@@ -165,7 +167,7 @@ export default function UiUxCard({
               {isCompleted && (
                 <span className="hidden sm:flex px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 items-center gap-1.5 border border-emerald-500/20">
                   <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>{completedAt ? `Done on ${completedAt}` : 'Completed'}</span>
+                  <span>{displayCompletedAt ? `Done on ${displayCompletedAt}` : 'Completed'}</span>
                 </span>
               )}
 

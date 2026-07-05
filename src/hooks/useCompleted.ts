@@ -48,13 +48,7 @@ export const useCompleted = () => {
 
     setCompletedDates((prev) => {
       if (prev[id]) return prev; // already has date
-      const dateStr = new Date().toLocaleString(undefined, {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit',
-      });
+      const dateStr = new Date().toISOString();
       const newDates = { ...prev, [id]: dateStr };
       localStorage.setItem(COMPLETED_DATES_KEY, JSON.stringify(newDates));
       return newDates;
@@ -63,13 +57,7 @@ export const useCompleted = () => {
 
   const markDownloaded = (id: number) => {
     setDownloadDates((prev) => {
-      const dateStr = new Date().toLocaleString(undefined, {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit',
-      });
+      const dateStr = new Date().toISOString();
       // Always update on download to reflect the *recent* click time
       const newDates = { ...prev, [id]: dateStr };
       localStorage.setItem(DOWNLOAD_DATES_KEY, JSON.stringify(newDates));
@@ -81,12 +69,44 @@ export const useCompleted = () => {
   const getCompletionDate = (id: number) => completedDates[id] || null;
   const getDownloadDate = (id: number) => downloadDates[id] || null;
 
+  const getAverageTime = () => {
+    let totalMs = 0;
+    let count = 0;
+    Object.keys(completedDates).forEach((key) => {
+      const id = Number(key);
+      const start = downloadDates[id];
+      const end = completedDates[id];
+      if (start && end) {
+        const startMs = new Date(start).getTime();
+        const endMs = new Date(end).getTime();
+        if (!isNaN(startMs) && !isNaN(endMs) && endMs >= startMs) {
+          totalMs += (endMs - startMs);
+          count++;
+        }
+      }
+    });
+    if (count === 0) return null;
+    const avgMs = totalMs / count;
+    
+    const totalHrs = Math.floor(avgMs / (1000 * 60 * 60));
+    const days = Math.floor(totalHrs / 24);
+    const hrs = totalHrs % 24;
+    const mins = Math.floor(avgMs / (1000 * 60)) % 60;
+    const secs = Math.floor(avgMs / 1000) % 60;
+    
+    if (days > 0) return `${days}d ${hrs}h`;
+    if (hrs > 0) return `${hrs}h ${mins}m`;
+    if (mins > 0) return `${mins}m ${secs}s`;
+    return `${secs}s`;
+  };
+
   return { 
     completedIds, 
     markCompleted, 
     isCompleted, 
     getCompletionDate,
     markDownloaded,
-    getDownloadDate
+    getDownloadDate,
+    getAverageTime
   };
 };

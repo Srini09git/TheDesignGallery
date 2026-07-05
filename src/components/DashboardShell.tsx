@@ -6,7 +6,7 @@ import { useCompleted } from '@/hooks/useCompleted';
 
 export default function DashboardShell() {
   const { user } = useAuth();
-  const { completedIds } = useCompleted();
+  const { completedIds, getAverageTime } = useCompleted();
 
   if (!user) return null;
 
@@ -15,6 +15,7 @@ export default function DashboardShell() {
       username={user.username}
       roles={user.roles}
       completedIds={completedIds}
+      averageTime={getAverageTime()}
     />
   );
 }

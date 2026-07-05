@@ -16,10 +16,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/challenges/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/challenges/page.js"
+      "static/chunks/app/_not-found/page.js"
     ],
     "/ui-ux/page": [
       "static/chunks/webpack.js",
@@ -31,10 +31,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/graphic-design/page.js"
     ],
-    "/_not-found/page": [
+    "/challenges/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/challenges/page.js"
+    ],
+    "/interview/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/interview/page.js"
+    ],
+    "/placement/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/placement/page.js"
     ]
   }
 }
