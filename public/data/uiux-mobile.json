@@ -20,40 +20,40 @@
     },
     {
       "id": 301,
+      "title": "Customer Reviews & Appointment Booking UI",
+      "category": "mobile-screen",
+      "image": "",
+      "images": [
+        "/Images/UiUx/Mobile/task2/task2 (1).png",
+        "/Images/UiUx/Mobile/task2/task2 (2).png",
+        "/Images/UiUx/Mobile/task2/task2 (3).png",
+        "/Images/UiUx/Mobile/task2/task2 (4).png"
+      ],
+      "description": "Design a seamless appointment booking and customer review experience for a mobile application. The interface enables users to schedule appointments, browse customer feedback, filter reviews by ratings, and sort reviews to make informed decisions",
+      "objectives": [
+        "Task 1: Design an intuitive appointment scheduling interface with date and time selection.",
+        "Task 2: Create a customer reviews page with ratings, reviewer details, and feedback.",
+        "Task 3: Implement review filtering and sorting options to improve user experience."
+      ],
+      "author": "Easy"
+    },
+    {
+      "id": 302,
       "title": "Travel Booking Mobile App UI",
       "category": "mobile-screen",
       "image": "",
       "images": [
-        "/Images/UiUx/Mobile/task2/task2 (1).jpg",
-        "/Images/UiUx/Mobile/task2/task2 (2).jpg",
-        "/Images/UiUx/Mobile/task2/task2 (3).jpg",
-        "/Images/UiUx/Mobile/task2/task2 (4).jpg",
-        "/Images/UiUx/Mobile/task2/task2 (5).jpg"
+        "/Images/UiUx/Mobile/task3/task3 (1).jpg",
+        "/Images/UiUx/Mobile/task3/task3 (2).jpg",
+        "/Images/UiUx/Mobile/task3/task3 (3).jpg",
+        "/Images/UiUx/Mobile/task3/task3 (4).jpg",
+        "/Images/UiUx/Mobile/task3/task3 (5).jpg"
       ],
       "description": "Design a modern travel booking mobile application featuring a branded splash screen, user authentication, profile management, and notification settings. Focus on creating a clean, intuitive, and engaging user experience for travelers.",
       "objectives": [
         "Task 1: Design a visually appealing splash screen and user authentication flow.",
         "Task 2: Create a user profile interface with account management and navigation options.",
         "Task 3: Design a customizable notification settings screen for travel updates and promotions."
-      ],
-      "author": "Easy"
-    },
-    {
-      "id": 302,
-      "title": "Customer Reviews & Appointment Booking UI",
-      "category": "mobile-screen",
-      "image": "",
-      "images": [
-        "/Images/UiUx/Mobile/task3/task3 (1).png",
-        "/Images/UiUx/Mobile/task3/task3 (2).png",
-        "/Images/UiUx/Mobile/task3/task3 (3).png",
-        "/Images/UiUx/Mobile/task3/task3 (4).png"
-      ],
-      "description": "Design a seamless appointment booking and customer review experience for a mobile application. The interface enables users to schedule appointments, browse customer feedback, filter reviews by ratings, and sort reviews to make informed decisions.",
-      "objectives": [
-        "Task 1: Design an intuitive appointment scheduling interface with date and time selection.",
-        "Task 2: Create a customer reviews page with ratings, reviewer details, and feedback.",
-        "Task 3: Implement review filtering and sorting options to improve user experience."
       ],
       "author": "Easy"
     },
