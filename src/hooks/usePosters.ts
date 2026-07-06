@@ -52,15 +52,18 @@ export const usePosters = (completedIds: number[] = [], track: Track = 'graphic-
           const data = await res.json();
           setPosters(data.posters || []);
         } else {
-          const [postersRes, logosRes] = await Promise.all([
+          const [postersRes, logosRes, flyersRes] = await Promise.all([
             fetch('/data/posters.json'),
-            fetch('/data/logos.json')
+            fetch('/data/logos.json'),
+            fetch('/data/Flyer.json')
           ]);
           const postersData = await postersRes.json();
           const logosData = await logosRes.json();
+          const flyersData = await flyersRes.json();
           setPosters([
             ...(postersData.posters || []),
-            ...(logosData.posters || [])
+            ...(logosData.posters || []),
+            ...(flyersData.posters || [])
           ]);
         }
       } catch (error) {

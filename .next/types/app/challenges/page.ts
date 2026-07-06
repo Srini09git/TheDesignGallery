@@ -1,4 +1,4 @@
-// File: C:\Users\kavya\OneDrive\Desktop\doctor-listing\TheDesignGallery\src\app\challenges\page.tsx
+// File: D:\TheDesignGallery\src\app\challenges\page.tsx
 import * as entry from '../../../../src/app/challenges/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
