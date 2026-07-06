@@ -110,11 +110,12 @@ export default function Dashboard({ username, roles = [], completedIds, averageT
         const uiuxCompleted = uiuxPosters.filter(p => completedIds.includes(p.id)).length;
 
         // Graphic design data
-        const [postersRes, logosRes] = await Promise.all([
+        const [postersRes, logosRes, flyersRes] = await Promise.all([
           fetch('/data/posters.json').then(r => r.json()).catch(() => ({ posters: [] })),
-          fetch('/data/logos.json').then(r => r.json()).catch(() => ({ posters: [] }))
+          fetch('/data/logos.json').then(r => r.json()).catch(() => ({ posters: [] })),
+          fetch('/data/Flyer.json').then(r => r.json()).catch(() => ({ posters: [] }))
         ]);
-        const graphicPosters = [...(postersRes.posters || []), ...(logosRes.posters || [])];
+        const graphicPosters = [...(postersRes.posters || []), ...(logosRes.posters || []), ...(flyersRes.posters || [])];
         const graphicTotal = graphicPosters.length;
         const graphicCompleted = graphicPosters.filter(p => completedIds.includes(p.id)).length;
 
@@ -167,10 +168,11 @@ export default function Dashboard({ username, roles = [], completedIds, averageT
 
         const gPosters = postersRes.posters || [];
         const gLogos = logosRes.posters || [];
+        const gFlyers = flyersRes.posters || [];
         const posterList = gPosters.filter((p: Poster) => p.category === 'poster');
         const logoList = gLogos.filter((p: Poster) => p.category === 'logo');
         const brandLogoList = gLogos.filter((p: Poster) => p.category === 'BrandLogo');
-        const flyerList = gPosters.filter((p: Poster) => p.category === 'flyer');
+        const flyerList = [...gPosters.filter((p: Poster) => p.category === 'flyer'), ...gFlyers.filter((p: Poster) => p.category === 'flyer')];
         const bannerList = gPosters.filter((p: Poster) => p.category === 'banner');
 
         setSubStats({
