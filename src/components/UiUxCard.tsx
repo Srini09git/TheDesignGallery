@@ -45,8 +45,8 @@ export default function UiUxCard({
 }: UiUxCardProps) {
   const taskNum = index + 1;
   const duration = completedAt && downloadedAt ? calculateDuration(downloadedAt, completedAt) : null;
-  const displayCompletedAt = formatDate(completedAt);
-  const displayDownloadedAt = formatDate(downloadedAt);
+  const displayCompletedAt = formatDate(completedAt || null);
+  const displayDownloadedAt = formatDate(downloadedAt || null);
   const hasImage = poster.image !== false && (typeof poster.image === 'string' || (poster.images && poster.images.length > 0));
 
   return (
@@ -92,6 +92,16 @@ export default function UiUxCard({
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-secondary text-secondary-foreground">
                   {categoryLabels[poster.category] || poster.category}
                 </span>
+                {poster.screens?.mobile && (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                    Mobile: {poster.screens.mobile} {Number(poster.screens.mobile) === 1 ? 'Screen' : 'Screens'}
+                  </span>
+                )}
+                {poster.screens?.pc && (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+                    PC: {poster.screens.pc} {Number(poster.screens.pc) === 1 ? 'Screen' : 'Screens'}
+                  </span>
+                )}
                 {displayDownloadedAt && (
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 sm:hidden flex items-center gap-1">
                     {hasImage ? '↓' : <Play className="w-2.5 h-2.5" />} {displayDownloadedAt}

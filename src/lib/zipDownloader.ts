@@ -13,7 +13,7 @@ export const downloadPosterZip = async (
   const toastId = toast.loading(`Fetching screens for ${poster.title}...`);
   try {
     const zip = new JSZip();
-    const images = poster.images || (poster.image ? [poster.image] : []);
+    const images: string[] = poster.images || (typeof poster.image === 'string' ? [poster.image] : []);
     
     const fetchPromises = images.map(async (imgUrl, index) => {
       const response = await fetch(imgUrl);

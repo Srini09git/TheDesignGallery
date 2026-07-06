@@ -1,8 +1,5 @@
 {
-  "/ui-ux/page": "app/ui-ux/page.js",
   "/page": "app/page.js",
-  "/challenges/page": "app/challenges/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/graphic-design/page": "app/graphic-design/page.js",
-  "/interview/page": "app/interview/page.js"
+  "/challenges/page": "app/challenges/page.js"
 }

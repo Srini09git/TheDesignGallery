@@ -199,13 +199,23 @@ export default function UiUxLightbox({
 
           {/* Header Details */}
           <div>
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-2 mb-2 flex-wrap">
               <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary uppercase tracking-wider">
                 {poster.category.replace('-', ' ')}
               </span>
               <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-secondary text-secondary-foreground border border-border/80">
                 {poster.level || poster.author} Level
               </span>
+              {poster.screens?.mobile && (
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                  Mobile: {poster.screens.mobile} {Number(poster.screens.mobile) === 1 ? 'Screen' : 'Screens'}
+                </span>
+              )}
+              {poster.screens?.pc && (
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+                  PC: {poster.screens.pc} {Number(poster.screens.pc) === 1 ? 'Screen' : 'Screens'}
+                </span>
+              )}
             </div>
             <h2 className="text-2xl font-bold font-display leading-tight text-foreground">
               {poster.title}

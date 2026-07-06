@@ -13,6 +13,10 @@ export interface Poster {
   step_by_step?: string[];
   asset_image?: string;
   idea?: string;
+  screens?: {
+    mobile?: string;
+    pc?: string;
+  };
 }
 
 export type Category = 'all' | 'BrandLogo' | 'logo' | 'poster' | 'flyer' | 'banner' | 'completed' | 'mobile-screen' | 'desktop-ui' | 'ux' | 'challenge' | 'Frontend' | 'Backend' | 'UiUx' | 'Graphic design' | 'UI design' | 'UX';
