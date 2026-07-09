@@ -152,6 +152,26 @@
         "Task 3: Design user profile, address management, payment methods, navigation menu, and order confirmation screens while maintaining a consistent user interface."
       ],
       "author": "Intermediate"
+    },
+    {
+      "id": 306,
+      "title": "Doctor Listing Mobile App UI",
+      "category": "mobile-screen",
+      "image": "",
+      "images": [
+        "/Images/UiUx/Mobile/task7/task7 (1).jpg",
+        "/Images/UiUx/Mobile/task7/task7 (2).jpg",
+        "/Images/UiUx/Mobile/task7/task7 (3).jpg",
+        "/Images/UiUx/Mobile/task7/task7 (4).jpg",
+        "/Images/UiUx/Mobile/task7/task7 zip.zip"
+      ],
+      "description": "Design a modern healthcare mobile application that helps users search for doctors, book appointments, view hospital information, receive notifications, and manage their healthcare journey with a clean and user-friendly interface.",
+      "objectives": [
+        "Task 1: Design onboarding, login, registration, and account management screens with a simple and secure user experience.",
+        "Task 2: Create healthcare browsing screens including home, doctor listing, doctor search, hospital details, news, and notifications.",
+        "Task 3: Design online consultation, appointment booking, and user profile management screens while maintaining a clean, modern, and consistent mobile UI."
+      ],
+      "author": "Advanced"
     }
   ]
 }
