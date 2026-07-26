@@ -1,11 +1,15 @@
 {
   "posters": [
     {
-      "id": 302,
+      "id": 3202,
       "title": "User Checkout Flow Map",
       "category": "ux",
       "image": "/Images/UiUx/ux.png",
-      "images": ["/Images/UiUx/ux.png", "/Images/UiUx/mobile-screen.png", "/Images/UiUx/desktop-ui.png"],
+      "images": [
+        "/Images/UiUx/ux.png",
+        "/Images/UiUx/mobile-screen.png",
+        "/Images/UiUx/desktop-ui.png"
+      ],
       "description": "Construct detailed user experience diagrams mapping transition checkpoints, user actions, and server feedback loops for a retail mobile platform.",
       "objectives": [
         "Task 1: Map the user check-out transition flow diagram",

@@ -1,7 +1,7 @@
 {
   "posters": [
     {
-      "id": 403,
+      "id": 4003,
       "title": "Tech Conference Branding",
       "category": "Graphic design",
       "author": "Easy",
@@ -10,10 +10,12 @@
       "idea": "Use neon accents and isometric grid patterns to convey a 'future of tech' vibe.",
       "asset_image": "/Images/UiUx/desktop-ui.png",
       "image": "/Images/UiUx/desktop-ui.png",
-      "images": ["/Images/UiUx/desktop-ui.png"]
+      "images": [
+        "/Images/UiUx/desktop-ui.png"
+      ]
     },
     {
-      "id": 408,
+      "id": 4008,
       "title": "Organic Coffee Packaging",
       "category": "Graphic design",
       "level": "Intermediate",
@@ -22,10 +24,12 @@
       "idea": "Combine earthy, muted tones with rough typography to emphasize the organic nature of the beans.",
       "asset_image": "/Images/UiUx/desktop-ui.png",
       "image": "/Images/UiUx/desktop-ui.png",
-      "images": ["/Images/UiUx/desktop-ui.png"]
+      "images": [
+        "/Images/UiUx/desktop-ui.png"
+      ]
     },
     {
-      "id": 409,
+      "id": 4009,
       "title": "Music Festival Poster Series",
       "category": "Graphic design",
       "level": "Advanced",
@@ -34,7 +38,9 @@
       "idea": "Utilize surreal collages and vibrant gradients to capture the energy of live music.",
       "asset_image": "/Images/UiUx/mobile-screen.png",
       "image": "/Images/UiUx/mobile-screen.png",
-      "images": ["/Images/UiUx/mobile-screen.png"]
+      "images": [
+        "/Images/UiUx/mobile-screen.png"
+      ]
     }
   ]
 }

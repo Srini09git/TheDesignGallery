@@ -120,10 +120,17 @@ export default function Dashboard({ username, roles = [], completedIds, averageT
         const graphicCompleted = graphicPosters.filter(p => completedIds.includes(p.id)).length;
 
         // Challenges data
-        const challengesRes = await fetch('/data/challenges.json').then(r => r.json()).catch(() => ({ posters: [] }));
-        const challengesPosters = challengesRes.posters || [];
+        const [cUiRes, cUxRes, cGraphicRes] = await Promise.all([
+          fetch('/data/challenges-ui.json').then(r => r.json()).catch(() => ({ posters: [] })),
+          fetch('/data/challenges-ux.json').then(r => r.json()).catch(() => ({ posters: [] })),
+          fetch('/data/challenges-graphic.json').then(r => r.json()).catch(() => ({ posters: [] }))
+        ]);
+        const cUiPosters = cUiRes.posters || [];
+        const cUxPosters = cUxRes.posters || [];
+        const cGraphicPosters = cGraphicRes.posters || [];
+        const challengesPosters = [...cUiPosters, ...cUxPosters, ...cGraphicPosters];
         const challengesTotal = challengesPosters.length;
-        const challengesCompleted = challengesPosters.filter(p => completedIds.includes(p.id)).length;
+        const challengesCompleted = challengesPosters.filter((p: Poster) => completedIds.includes(p.id)).length;
 
         // Prep data
         const prepRes = await fetch('/data/preparation.json').then(r => r.json()).catch(() => ({ posters: [] }));
@@ -175,6 +182,10 @@ export default function Dashboard({ username, roles = [], completedIds, averageT
         const flyerList = [...gPosters.filter((p: Poster) => p.category === 'flyer'), ...gFlyers.filter((p: Poster) => p.category === 'flyer')];
         const bannerList = gPosters.filter((p: Poster) => p.category === 'banner');
 
+        const cUiCompleted = cUiPosters.filter((p: Poster) => completedIds.includes(p.id)).length;
+        const cUxCompleted = cUxPosters.filter((p: Poster) => completedIds.includes(p.id)).length;
+        const cGraphicCompleted = cGraphicPosters.filter((p: Poster) => completedIds.includes(p.id)).length;
+
         setSubStats({
           uiux: [
             { title: 'Mobile Screen', completed: mobileCompleted, total: mobileTotal, percent: mobileTotal > 0 ? Math.round((mobileCompleted / mobileTotal) * 100) : 0 },
@@ -189,7 +200,9 @@ export default function Dashboard({ username, roles = [], completedIds, averageT
             { title: 'Banners', completed: bannerList.filter((p: Poster) => completedIds.includes(p.id)).length, total: bannerList.length, percent: bannerList.length > 0 ? Math.round((bannerList.filter((p: Poster) => completedIds.includes(p.id)).length / bannerList.length) * 100) : 0 }
           ],
           challenges: [
-            { title: 'Challenges', completed: challengesPosters.filter(p => completedIds.includes(p.id)).length, total: challengesTotal, percent: challengesTotal > 0 ? Math.round((challengesPosters.filter(p => completedIds.includes(p.id)).length / challengesTotal) * 100) : 0 }
+            { title: 'UI Design Challenges', completed: cUiCompleted, total: cUiPosters.length, percent: cUiPosters.length > 0 ? Math.round((cUiCompleted / cUiPosters.length) * 100) : 0 },
+            { title: 'UX Challenges', completed: cUxCompleted, total: cUxPosters.length, percent: cUxPosters.length > 0 ? Math.round((cUxCompleted / cUxPosters.length) * 100) : 0 },
+            { title: 'Graphic Design Challenges', completed: cGraphicCompleted, total: cGraphicPosters.length, percent: cGraphicPosters.length > 0 ? Math.round((cGraphicCompleted / cGraphicPosters.length) * 100) : 0 }
           ],
           prep: [
             { title: 'Interview Prep', completed: prepPosters.filter(p => completedIds.includes(p.id)).length, total: prepTotal, percent: prepTotal > 0 ? Math.round((prepPosters.filter(p => completedIds.includes(p.id)).length / prepTotal) * 100) : 0 }

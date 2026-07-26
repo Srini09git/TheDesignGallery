@@ -15,6 +15,7 @@ interface UiUxLightboxProps {
   isCompleted: boolean;
   onMarkCompleted: (id: number) => void;
   onMarkDownloaded: (id: number) => void;
+  downloadedAt?: string | null;
   isLocked?: boolean;
 }
 
@@ -24,15 +25,18 @@ export default function UiUxLightbox({
   isCompleted,
   onMarkCompleted,
   onMarkDownloaded,
+  downloadedAt,
   isLocked = false,
 }: UiUxLightboxProps) {
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [isZipping, setIsZipping] = useState(false);
+  const [isStarted, setIsStarted] = useState<boolean>(Boolean(downloadedAt));
 
-  // Reset state when poster changes
+  // Reset state when poster or downloadedAt changes
   useEffect(() => {
     setActiveImgIndex(0);
-  }, [poster]);
+    setIsStarted(Boolean(downloadedAt));
+  }, [poster, downloadedAt]);
 
   if (!poster) return null;
 
@@ -47,7 +51,15 @@ export default function UiUxLightbox({
     setActiveImgIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
+  const handleStartTest = () => {
+    if (isStarted || isCompleted || isLocked) return;
+    setIsStarted(true);
+    onMarkDownloaded(poster.id);
+    toast.success('Test started!');
+  };
+
   const handleDownloadZip = () => {
+    setIsStarted(true);
     onMarkDownloaded(poster.id);
     downloadPosterZip(
       poster,
@@ -280,11 +292,11 @@ export default function UiUxLightbox({
             {hasImage ? (
               <Button
                 onClick={handleDownloadZip}
-                disabled={isZipping || isLocked}
+                disabled={isZipping || isLocked || isStarted || isCompleted}
                 className={cn(
-                  "flex-1 rounded-2xl py-6 font-semibold shadow-soft flex items-center justify-center gap-2",
-                  isCompleted
-                    ? "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border"
+                  "flex-1 rounded-2xl py-6 font-semibold shadow-soft flex items-center justify-center gap-2 transition-all",
+                  isCompleted || isStarted
+                    ? "bg-secondary text-muted-foreground border border-border opacity-70 cursor-not-allowed"
                     : isLocked
                       ? "bg-muted text-muted-foreground border border-border"
                       : "gradient-primary hover:opacity-95 text-white"
@@ -295,6 +307,11 @@ export default function UiUxLightbox({
                     <span className="animate-spin w-4 h-4 border-2 border-current border-t-transparent rounded-full" />
                     <span>Packaging ZIP...</span>
                   </>
+                ) : isStarted || isCompleted ? (
+                  <>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                    <span>{isCompleted ? 'Test Completed' : 'Test Started'}</span>
+                  </>
                 ) : (
                   <>
                     <Download className="w-4 h-4" />
@@ -304,21 +321,25 @@ export default function UiUxLightbox({
               </Button>
             ) : (
               <Button
-                onClick={() => {
-                  onMarkDownloaded(poster.id);
-                  toast.success('Task started!');
-                }}
-                disabled={isLocked}
+                onClick={handleStartTest}
+                disabled={isLocked || isStarted || isCompleted}
                 className={cn(
-                  "flex-1 rounded-2xl py-6 font-semibold shadow-soft flex items-center justify-center gap-2",
-                  isCompleted
-                    ? "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border"
+                  "flex-1 rounded-2xl py-6 font-semibold shadow-soft flex items-center justify-center gap-2 transition-all",
+                  isCompleted || isStarted
+                    ? "bg-secondary text-muted-foreground border border-border opacity-70 cursor-not-allowed"
                     : isLocked
                       ? "bg-muted text-muted-foreground border border-border"
                       : "gradient-primary hover:opacity-95 text-white"
                 )}
               >
-                <span>{isLocked ? 'Locked' : 'Start Task'}</span>
+                {isStarted || isCompleted ? (
+                  <>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                    <span>{isCompleted ? 'Test Completed' : 'Test Started'}</span>
+                  </>
+                ) : (
+                  <span>{isLocked ? 'Locked' : 'Start Test'}</span>
+                )}
               </Button>
             )}
 

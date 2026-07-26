@@ -236,6 +236,7 @@ export default function GalleryPage({ track }: GalleryPageProps) {
             isCompleted={isCompleted(selectedPoster.id)}
             onMarkCompleted={markCompleted}
             onMarkDownloaded={markDownloaded}
+            downloadedAt={getDownloadDate(selectedPoster.id)}
             isLocked={track === 'ui-ux' && selectedPoster.category === 'desktop-ui' && uiuxCompletedCount < 5}
           />
         ) : (

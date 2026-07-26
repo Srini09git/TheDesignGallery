@@ -1,7 +1,7 @@
 {
   "posters": [
     {
-      "id": 402,
+      "id": 4002,
       "title": "Fintech Mobile Checkout Flow",
       "category": "UX",
       "level": "Advanced",
@@ -14,10 +14,12 @@
         "Refine layout and finalize UI handoff"
       ],
       "image": "/Images/UiUx/mobile-screen.png",
-      "images": ["/Images/UiUx/mobile-screen.png"]
+      "images": [
+        "/Images/UiUx/mobile-screen.png"
+      ]
     },
     {
-      "id": 406,
+      "id": 4006,
       "title": "Healthcare Appointment Booking",
       "category": "UX",
       "level": "Intermediate",
@@ -30,10 +32,12 @@
         "Develop a confirmation screen with clear instructions"
       ],
       "image": "/Images/UiUx/mobile-screen.png",
-      "images": ["/Images/UiUx/mobile-screen.png"]
+      "images": [
+        "/Images/UiUx/mobile-screen.png"
+      ]
     },
     {
-      "id": 407,
+      "id": 4007,
       "title": "Onboarding for Fitness App",
       "category": "UX",
       "level": "Easy",
@@ -46,7 +50,9 @@
         "Provide a 'Skip' option for power users"
       ],
       "image": "/Images/UiUx/mobile-screen.png",
-      "images": ["/Images/UiUx/mobile-screen.png"]
+      "images": [
+        "/Images/UiUx/mobile-screen.png"
+      ]
     }
   ]
 }
