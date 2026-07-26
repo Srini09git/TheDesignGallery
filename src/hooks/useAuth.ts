@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { DUMMY_LOGIN_NOTIFICATIONS_JSON } from '@/components/LoginActivityModal';
 
 const AUTH_KEY = 'poster_user';
 const LAST_LOGIN_KEY = 'lastLogin';
@@ -21,65 +22,38 @@ export interface LoginWarningInfo {
 
 export function getInactivityTier(diffHours: number, diffDays: number, isFirstLogin: boolean = false) {
   if (isFirstLogin) {
-    return {
-      title: "Welcome to CWlearning!",
-      badge: "First Login",
-      message: "Welcome aboard! Track your UI/UX flows, graphic design assets, and real-world design challenges. Let's start learning!",
-      badgeClass: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
-      iconType: 'info' as const
-    };
+    return DUMMY_LOGIN_NOTIFICATIONS_JSON.first_login;
   }
 
   if (diffHours < 24) {
-    return {
-      title: "Welcome Back!",
-      badge: "Active Today",
-      message: "Glad to see you back today! Keep up your awesome daily learning momentum and conquer your next design challenge.",
-      badgeClass: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
-      iconType: 'info' as const
-    };
+    return DUMMY_LOGIN_NOTIFICATIONS_JSON.active_today;
   }
 
   if (diffDays < 2) {
     // 24 hours to < 48 hours (1 day)
-    return {
-      title: "Welcome Back!",
-      badge: "24 Hours Inactive",
-      message: "Great to see you today! Daily practice builds strong design habits—let's keep your learning momentum going!",
-      badgeClass: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
-      iconType: 'info' as const
-    };
+    return DUMMY_LOGIN_NOTIFICATIONS_JSON.inactive_24h;
   }
 
   if (diffDays >= 2 && diffDays < 5) {
     // 2 to 4 days
     return {
-      title: "We Missed You!",
+      ...DUMMY_LOGIN_NOTIFICATIONS_JSON.inactive_2_5_days,
       badge: `${diffDays} Days Inactive`,
-      message: `We missed you over the last ${diffDays} days! Ready to get back into your creative flow and tackle your next design challenge?`,
-      badgeClass: "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30",
-      iconType: 'warning' as const
     };
   }
 
   if (diffDays >= 5 && diffDays <= 7) {
     // 5 to 7 days
     return {
-      title: "Time to Catch Up!",
+      ...DUMMY_LOGIN_NOTIFICATIONS_JSON.inactive_5_7_days,
       badge: `${diffDays} Days Inactive`,
-      message: `It's been ${diffDays} days since your last login! Your design journey is waiting for you. Let's make today count and catch up on your goals!`,
-      badgeClass: "bg-orange-500/15 text-orange-600 dark:text-orange-400 border-orange-500/30",
-      iconType: 'alert' as const
     };
   }
 
   // More than 7 days (> 7 days)
   return {
-    title: "Welcome Back, Designer!",
+    ...DUMMY_LOGIN_NOTIFICATIONS_JSON.inactive_over_7_days,
     badge: `${diffDays} Days Away`,
-    message: `It's been over a week (${diffDays} days)! It's never too late to restart your learning streak. Explore new UI/UX flows and challenges today!`,
-    badgeClass: "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30",
-    iconType: 'urgent' as const
   };
 }
 
