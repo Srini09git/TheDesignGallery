@@ -3,6 +3,7 @@
 import { useAuth } from '@/hooks/useAuth';
 import LoginForm from '@/components/LoginForm';
 import Header from '@/components/Header';
+import LoginActivityModal from '@/components/LoginActivityModal';
 import { Loader2 } from 'lucide-react';
 
 interface AppShellProps {
@@ -10,7 +11,7 @@ interface AppShellProps {
 }
 
 export default function AppShell({ children }: AppShellProps) {
-  const { user, isLoading, login, logout } = useAuth();
+  const { user, isLoading, login, logout, loginWarning, dismissLoginWarning } = useAuth();
 
   if (isLoading) {
     return (
@@ -30,6 +31,13 @@ export default function AppShell({ children }: AppShellProps) {
       <main className="w-full">
         {children}
       </main>
+
+      {loginWarning && (
+        <LoginActivityModal
+          info={loginWarning}
+          onClose={dismissLoginWarning}
+        />
+      )}
     </div>
   );
 }
